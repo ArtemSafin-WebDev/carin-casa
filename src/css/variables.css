@@ -1,0 +1,17 @@
+:root {
+  --container-width: 158rem;
+  --content-padding: 0.8rem;
+  --primary-color: #1f47f3;
+  --text-color: #232323;
+  --grey: rgba(35, 35, 35, 0.4);
+  --white: #fffcf8;
+  --gilroy: "Gilroy", sans-serif;
+  --header-height: 9rem;
+  --side-padding: 4rem;
+
+  @media (--mobile) {
+    --content-padding: 0.4rem;
+    --side-padding: 1.2rem;
+    --header-height: 7rem;
+  }
+}

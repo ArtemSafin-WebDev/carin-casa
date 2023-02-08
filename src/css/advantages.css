@@ -1,0 +1,109 @@
+.advantages {
+  display: grid;
+  grid-template-columns:
+    [main-start] 1fr [side-start] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [content-start] minmax(0, var(--container-width, 0)) [content-end] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [side-end] 1fr [main-end];
+  grid-gap: var(--content-padding, 0);
+  margin-bottom: 24rem;
+
+  @media (--mobile) {
+    margin-bottom: 10rem;
+    display: none;
+  }
+}
+
+.feature-shown .advantages {
+  @media (--mobile) {
+    display: grid;
+    animation-name: fade-in;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
+}
+
+.advantages__content {
+  grid-column-start: side-start;
+  grid-column-end: side-end;
+}
+
+.advantages__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-gap: 0.8rem;
+
+  @media (--mobile) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2.6rem;
+  }
+}
+
+.advantages__list-item {
+  display: flex;
+  flex-direction: column;
+}
+.advantages__card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  gap: 3.2rem;
+  @media (--mobile) {
+    gap: 1.6rem;
+  }
+}
+
+.advantages__card-image-container {
+  position: relative;
+  overflow: hidden;
+  backface-visibility: hidden;
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 123%;
+  }
+
+  @media (--mobile) {
+    &::before {
+      padding-bottom: 56.25%;
+    }
+  }
+}
+
+.advantages__card-image-parallax {
+  position: absolute;
+  inset: 0;
+}
+
+.advantages__card-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.advantages__card-title {
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 135%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 135%;
+    text-align: center;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+  }
+}

@@ -1,0 +1,50 @@
+<section class="about js-reveal-block">
+    <div class="about__top">
+        <div class="about__top-inner">
+            <h2 class="about__heading">
+                <p>
+                    CARIN CASA — на сегодняшний день крупнейший производитель столов с керамикой в России, который был
+                    основан в 2019 году на базе столярной мастерской.
+                </p>
+            </h2>
+            <div class="about__specialists">
+                Более 40 специалистов разного профиля работают в компании
+            </div>
+            <div class="about__text-content">
+                <p>
+                    Спустя три года можно сказать, что специалисты CARIN CASA научились использовать керамику
+                    по-настоящему
+                    виртуозно, но продолжают каждый день создавать и совершенствовать новые решения.
+                </p>
+                <p>
+                    Каталог CARIN CASA регулярно пополняется новыми уникальными моделями. В процессе производства
+                    используется не только керамика, но также древесина благородных пород и металл, применяются
+                    авторские
+                    технологии обработки и окрашивания.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="about__bottom">
+        <div class="about__bottom-inner">
+            <ul class="about__links-list">
+                {{#each about}}
+                    <li class="about__links-list-item">
+                        <a href="#" class="about__links-card js-hover-card">
+                            <div class="about__links-card-image-container js-hover-card-image">
+                                <div class="about__links-card-image-parallax">
+                                    <img src="{{src}}" alt="" class="about__links-card-image">
+                                </div>
+                            </div>
+                            <div class="about__links-card-content">
+                                <h3 class="about__links-card-title js-hover-card-content">
+                                    {{ title }}
+                                </h3>
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</section>

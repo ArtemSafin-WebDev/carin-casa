@@ -1,0 +1,22 @@
+<section class="products">
+    <div class="products__content">
+        <ul class="products__list">
+            {{#each products}}
+                <li class="products__list-item">
+                    <a href="#" class="products__card js-hover-card">
+                        <div class="products__card-image-container">
+                            <div class="products__card-image-parallax" data-speed="auto">
+                                <img src="{{ src }}" alt="" class="products__card-image">
+                            </div>
+                        </div>
+                        <div class="products__card-content">
+                            <h3 class="products__card-title js-hover-card-content">
+                                {{ title }}
+                            </h3>
+                        </div>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

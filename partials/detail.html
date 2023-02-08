@@ -1,0 +1,45 @@
+<section class="detail js-reveal-block">
+    <div class="detail__content">
+        <div class="detail__text-content">
+            <h2 class="detail__heading">
+                <svg width="14" height="14" aria-hidden="true">
+                    <use xlink:href="#circle"></use>
+                </svg>
+                Любим своё дело
+            </h2>
+            <h3 class="detail__large-heading">
+                Истинная красота
+                скрыта в деталях
+            </h3>
+            <div class="detail__text">
+                Красота — это любовь к своему делу и внимание к деталям, так мы понимаем красоту и именно в этом
+                значении стремимся вложить её в каждое наше изделие
+            </div>
+        </div>
+        <div class="detail__slider js-detail-slider">
+            <button class="detail__slider-arrow detail__slider-arrow--prev">
+                <svg width="14" height="14" aria-hidden="true">
+                    <use xlink:href="#slider-arrow-left"></use>
+                </svg>
+            </button>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {{#each detail}}
+                        <div class="swiper-slide">
+                            <div class="detail__slider-card">
+                                <div class="detail__slider-card-parallax">
+                                    <img src="{{ src }}" alt="" class="detail__slider-card-image">
+                                </div>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            <button class="detail__slider-arrow detail__slider-arrow--next">
+                <svg width="14" height="14" aria-hidden="true">
+                    <use xlink:href="#slider-arrow-right"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>

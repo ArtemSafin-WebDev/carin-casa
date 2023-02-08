@@ -1,0 +1,70 @@
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 10px;
+  -webkit-text-size-adjust: 100%;
+
+  font-size: clamp(2px, 0.6vw, 125px);
+
+  @media (--mobile) {
+    font-size: 10px;
+  }
+}
+
+a {
+  text-decoration: none;
+  &:link,
+  &:visited {
+    color: inherit;
+  }
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+  -webkit-appearance: none;
+  appearance: none;
+  font: inherit;
+  color: inherit;
+  outline: none;
+}
+
+input,
+textarea {
+  border: none;
+  border-radius: 0;
+  font: inherit;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  width: 100%;
+  background-color: transparent;
+  display: block;
+}
+
+::selection {
+  color: white;
+  background-color: var(--primary-color);
+  -webkit-text-fill-color: white;
+}

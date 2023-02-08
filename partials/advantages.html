@@ -1,0 +1,20 @@
+<section class="advantages">
+    <div class="advantages__content">
+        <ul class="advantages__list">
+            {{#each advantages}}
+                <li class="advantages__list-item">
+                    <a href="#" class="advantages__card">
+                        <div class="advantages__card-image-container">
+                            <div class="advantages__card-image-parallax">
+                                <img src="{{ src }}" alt="" class="advantages__card-image">
+                            </div>
+                        </div>
+                        <h3 class="advantages__card-title">
+                            {{ title }}
+                        </h3>
+                    </a>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</section>

@@ -1,0 +1,16 @@
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  font-family: var(--gilroy);
+  background-color: var(--white);
+  color: var(--text-color);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
