@@ -18,10 +18,6 @@ export default function menu() {
     document.querySelectorAll<HTMLUListElement>(".page-header__nav-list-item")
   );
 
-  const submenus = Array.from(
-    document.querySelectorAll<HTMLDivElement>(".page-header__submenu")
-  );
-
   const openMenu = () => {
     if (menuOpen) return;
     document.documentElement.classList.add("menu-open");

@@ -1,6 +1,6 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Swiper, { SwiperOptions, Controller, EffectFade } from "swiper";
+import Swiper, { Controller, EffectFade } from "swiper";
 import "swiper/css";
 import "swiper/css/effect-fade ";
 
