@@ -2,7 +2,9 @@ import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
+import { Flip } from "gsap/Flip";
+
+gsap.registerPlugin(ScrollTrigger, Flip);
 
 export default function menu() {
   const burger = document.querySelector<HTMLButtonElement>(
@@ -85,6 +87,7 @@ export default function menu() {
   itemsWithSubmenu.forEach((item) => {
     const btn = item.querySelector<HTMLLinkElement>(".page-header__nav-link");
     const content = item.querySelector<HTMLElement>(".page-header__submenu");
+    const submenuInner = item.querySelector(".page-header__submenu-inner");
     const links = Array.from(
       item.querySelectorAll<HTMLLinkElement>(".page-header__submenu-link")
     );
@@ -94,20 +97,29 @@ export default function menu() {
     );
 
     const setActiveBlock = (index: number) => {
+      if (window.matchMedia("(max-width: 640px)").matches) return;
+      const state = Flip.getState(submenuInner);
       links.forEach((link) => link.classList.remove("active"));
-      links[index]?.classList.add("active");
       blocks.forEach((block) => block.classList.remove("active"));
-      blocks[index]?.classList.add("active");
-    };
+      if (index !== -1) {
+        links[index]?.classList.add("active");
+        blocks[index]?.classList.add("active");
+      }
 
-    if (blocks.length) {
-      setActiveBlock(0);
-    }
+      Flip.from(state, {
+        ease: "power1.inOut",
+        duration: 0.4,
+      });
+    };
 
     links.forEach((link, linkIndex) => {
       link.addEventListener("mouseenter", () => {
         setActiveBlock(linkIndex);
       });
+    });
+
+    content.addEventListener("mouseleave", () => {
+      setActiveBlock(-1);
     });
 
     if (content) {
