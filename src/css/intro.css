@@ -119,6 +119,14 @@
   line-height: 135%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
+
+  transition: color 0.2s;
+}
+
+@media (--desktop) {
+  .hover-inside .intro__desktop-categories-link:not(.hovered) {
+    color: rgba(255, 252, 248, 0.4);
+  }
 }
 
 .intro__mobile-categories {

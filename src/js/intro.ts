@@ -63,18 +63,26 @@ export default function intro() {
 
       links.forEach((link, linkIndex) => {
         link.addEventListener("mouseenter", () => {
+          links.forEach((link) => link.classList.remove("hovered"));
+          link.classList.add("hovered");
           bgSliderInstance.slideTo(linkIndex);
           contentSliderInstance.slideTo(linkIndex + 1);
+        });
+
+        link.addEventListener("mouseleave", () => {
+          link.classList.remove("hovered");
         });
       });
 
       linksContainer?.addEventListener("mouseenter", () => {
+        linksContainer.classList.add("hover-inside");
         gsap.to(bgSlider, {
           autoAlpha: 1,
           duration: 0.6,
         });
       });
       linksContainer?.addEventListener("mouseleave", () => {
+        linksContainer.classList.remove("hover-inside");
         contentSliderInstance.slideTo(0);
         gsap.to(bgSlider, {
           autoAlpha: 0,
