@@ -123,11 +123,29 @@
 
 .products__card-image-parallax {
   position: absolute;
+  left: 0;
   top: 0;
-  width: 120%;
-  height: 120%;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+}
+
+@media (--desktop) {
+  .products__list-item:nth-child(5n + 1) .products__card-image-parallax {
+    position: absolute;
+    top: 0;
+    width: 120%;
+    height: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .products__list-item:nth-child(5n + 2) .products__card-image-parallax {
+    position: absolute;
+    bottom: 0;
+    width: 120%;
+    height: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 .products__card-image {

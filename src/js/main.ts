@@ -20,3 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   homeAnimations();
   reveal();
 });
+
+window.addEventListener("load", () => {
+  document.body.classList.add("loaded");
+});

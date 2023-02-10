@@ -32,7 +32,7 @@ export default function hoverCards() {
       ScrollTrigger.create({
         trigger: card,
         start: "top center",
-        end: () => `top+=${card.offsetHeight * 1.5} center`,
+        end: () => `top+=${card.offsetHeight * 1} center`,
         toggleClass: "hovered",
       });
     });

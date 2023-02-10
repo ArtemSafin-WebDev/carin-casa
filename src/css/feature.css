@@ -164,7 +164,7 @@
 .feature__remark {
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 12px;
   line-height: 135%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -180,7 +180,7 @@
   @media (--mobile) {
     font-style: normal;
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 11px;
     line-height: 135%;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -327,7 +327,7 @@
   align-self: flex-start;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 12px;
   line-height: 100%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -343,26 +343,27 @@
     transition: transform 0.4s;
     transform-origin: center center;
     width: 100%;
-    padding-top: 0.4rem;
+    padding-top: 4px;
     background-clip: content-box;
     box-sizing: content-box;
+    transform: translateZ(0);
   }
 
   @media (--mobile) {
     font-style: normal;
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 11px;
     line-height: 100%;
 
     &::before {
-      padding-top: 0.6rem;
+      padding-top: 6px;
     }
   }
 
   @media (hover: hover) {
     &:hover {
       &::before {
-        transform: scaleX(0.4);
+        transform: translateZ(0) scaleX(0.4);
         transition: transform 0.4s ease-out;
       }
     }

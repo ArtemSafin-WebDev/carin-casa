@@ -41,30 +41,4 @@ export default function homeAnimations() {
     //   });
     // });
   }
-
-  const advantages: HTMLElement = document.querySelector(".advantages");
-
-  if (advantages) {
-    let mm = gsap.matchMedia();
-    const cards = Array.from(
-      advantages.querySelectorAll<HTMLLIElement>(".advantages__list-item")
-    );
-
-    mm.add("(min-width: 641px)", () => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: advantages,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      tl.from(cards, {
-        duration: 1,
-        y: 150,
-        stagger: 0.2,
-      });
-    });
-  }
 }
