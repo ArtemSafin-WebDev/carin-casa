@@ -15,7 +15,9 @@ export default function menu() {
   if (!menu) return;
 
   const menuItems = Array.from(
-    document.querySelectorAll<HTMLUListElement>(".page-header__nav-list-item")
+    document.querySelectorAll<HTMLUListElement>(
+      ".page-header__nav-list-item, .page-header__phone"
+    )
   );
 
   const openMenu = () => {

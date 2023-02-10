@@ -79,7 +79,7 @@
   text-align: right;
   flex-shrink: 0;
   white-space: nowrap;
-
+  transition: color 0.2s;
   @media (--mobile) {
     font-style: normal;
     font-weight: 400;
@@ -538,6 +538,12 @@
     .page-header__nav-link {
     color: rgba(255, 252, 248, 0.4);
   }
+  .menu-hovered:not(.submenu-open) .page-header__phone.hovered {
+    color: #fffcf8;
+  }
+  .menu-hovered:not(.submenu-open) .page-header__phone:not(.hovered) {
+    color: rgba(255, 252, 248, 0.4);
+  }
 
   .submenu-open .page-header {
     background-color: #fff;
@@ -559,6 +565,12 @@
   .menu-hovered.submenu-open
     .page-header__nav-list-item:not(.hovered)
     .page-header__nav-link {
+    color: rgba(35, 35, 35, 0.4);
+  }
+  .menu-hovered.submenu-open .page-header__phone.hovered {
+    color: #232323;
+  }
+  .menu-hovered.submenu-open .page-header__phone:not(.hovered) {
     color: rgba(35, 35, 35, 0.4);
   }
 
