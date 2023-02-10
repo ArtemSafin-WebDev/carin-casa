@@ -248,6 +248,12 @@
     animation-delay: 0.4s;
     animation-timing-function: ease-out;
   }
+
+  .feature__text-content-wrapper .feature__text-content {
+    opacity: 1;
+    visibility: inherit;
+    animation: none !important;
+  }
 }
 
 .feature__text-content:not(.feature__text-content--two-col) {
