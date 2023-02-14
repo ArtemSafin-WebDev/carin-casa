@@ -1,0 +1,378 @@
+<section class="catalog">
+    <div class="catalog__header">
+        <div class="catalog__header-bg">
+            <img src="/images/catalog-header.webp" alt="" class="catalog__header-bg-image">
+        </div>
+        <div class="catalog__header-inner">
+            <h1 class="catalog__main-heading">
+                <i>
+                    КОЛЛЕКЦИЯ
+                </i>
+                Carin Casa
+            </h1>
+        </div>
+    </div>
+    <div class="catalog__filters js-catalog-filters">
+        <div class="catalog__filters-inner">
+            <div class="catalog__filters-panel">
+                <div class="catalog__filters-panel-inner">
+                    <button class="catalog__filters-open-btn" type="button">
+                        Фильтры
+                    </button>
+
+                    <div class="catalog__filters-range">
+                        <button class="catalog__filters-range-btn catalog__filters-range-btn--minus" type="button">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <div class="catalog__filters-range-slider">
+                            <div class="catalog__filters-range-slider-inner">
+                                <div class="catalog__filters-range-slider-progress"></div>
+                            </div>
+                        </div>
+                        <button class="catalog__filters-range-btn catalog__filters-range-btn--plus" type="button">
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="catalog__filters-modal">
+                <div class="catalog__filters-modal-top-row">
+                    <h2 class="catalog__filters-modal-title">
+                        Фильтры
+                    </h2>
+                    <button class="catalog__filters-modal-close" type="button">
+                        <svg width="14" height="14" aria-hidden="true">
+                            <use xlink:href="#filters-close"></use>
+                        </svg>
+                    </button>
+                </div>
+                <form action="/" class="catalog__filters-form" method="GET">
+                    <div class="catalog__filters-categories">
+                        <div class="catalog__filters-accordion">
+
+
+                            <button class="catalog__filters-accordion-btn" type="button">
+                                <svg width="14" height="14" aria-hidden="true">
+                                    <use xlink:href="#arrow-right"></use>
+                                </svg>
+                                <span class="catalog__filters-accordion-btn-text">
+                                    Категория
+                                </span>
+                            </button>
+                            <div class="catalog__filters-accordion-content">
+                                <div class="catalog__filters-accordion-content-inner">
+                                    <ul class="catalog__filters-categories-list">
+                                        <li class="catalog__filters-categories-list-item">
+                                            <label class="catalog__filters-categories-radio">
+                                                <input type="radio" name="category"
+                                                    class="catalog__filters-categories-radio-input" value="Все изделия"
+                                                    checked="">
+                                                <span class="catalog__filters-categories-radio-text">
+                                                    Все изделия
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="catalog__filters-categories-list-item">
+                                            <label class="catalog__filters-categories-radio">
+                                                <input type="radio" name="category"
+                                                    class="catalog__filters-categories-radio-input" value="Столы">
+                                                <span class="catalog__filters-categories-radio-text">
+                                                    Столы
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="catalog__filters-categories-list-item">
+                                            <label class="catalog__filters-categories-radio">
+                                                <input type="radio" name="category"
+                                                    class="catalog__filters-categories-radio-input"
+                                                    value="\\Консоли и зеркала">
+                                                <span class="catalog__filters-categories-radio-text">
+                                                    Консоли и зеркала
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="catalog__filters-categories-list-item">
+                                            <label class="catalog__filters-categories-radio">
+                                                <input type="radio" name="category"
+                                                    class="catalog__filters-categories-radio-input" value="Стулья">
+                                                <span class="catalog__filters-categories-radio-text">
+                                                    Стулья
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="catalog__filters-categories-list-item">
+                                            <label class="catalog__filters-categories-radio">
+                                                <input type="radio" name="category"
+                                                    class="catalog__filters-categories-radio-input"
+                                                    value="Журнальные столики">
+                                                <span class="catalog__filters-categories-radio-text">
+                                                    Журнальные столики
+                                                </span>
+                                            </label>
+                                        </li>
+                                        <li class="catalog__filters-categories-list-item">
+                                            <label class="catalog__filters-categories-radio">
+                                                <input type="radio" name="category"
+                                                    class="catalog__filters-categories-radio-input" value="Комоды">
+                                                <span class="catalog__filters-categories-radio-text">
+                                                    Комоды
+                                                </span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="catalog__filters-selects">
+                        <div class="catalog__filters-select">
+                            <div class="catalog__filters-accordion">
+                                <button class="catalog__filters-accordion-btn" type="button">
+                                    <svg width="14" height="14" aria-hidden="true">
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                    <span class="catalog__filters-accordion-btn-text">
+                                        Тип стола
+                                    </span>
+                                </button>
+                                <div class="catalog__filters-accordion-content">
+                                    <div class="catalog__filters-accordion-content-inner">
+                                        <button class="catalog__filters-select-btn" type="button">
+                                            <span class="catalog__filters-select-btn-text">
+                                                Все столы
+                                            </span>
+                                            <svg width="14" height="14" aria-hidden="true">
+                                                <use xlink:href="#arrow-down"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="catalog__filters-select-dropdown">
+                                            <div class="catalog__filters-select-dropdown-inner">
+                                                <ul class="catalog__filters-select-list">
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="type"
+                                                                class="catalog__filters-select-radio-input" value="">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                Все столы
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="type"
+                                                                class="catalog__filters-select-radio-input" value="1">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                Прямоугольные и овальные
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="type"
+                                                                class="catalog__filters-select-radio-input" value="2">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                Круглые
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="type"
+                                                                class="catalog__filters-select-radio-input" value="2">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                Рабочие
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog__filters-select">
+                            <div class="catalog__filters-accordion">
+                                <button class="catalog__filters-accordion-btn" type="button">
+                                    <svg width="14" height="14" aria-hidden="true">
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                    <span class="catalog__filters-accordion-btn-text">
+                                        Год выпуска
+                                    </span>
+                                </button>
+                                <div class="catalog__filters-accordion-content">
+                                    <div class="catalog__filters-accordion-content-inner">
+                                        <button class="catalog__filters-select-btn" type="button">
+                                            <span class="catalog__filters-select-btn-text">
+                                                Все года
+                                            </span>
+                                            <svg width="14" height="14" aria-hidden="true">
+                                                <use xlink:href="#arrow-down"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="catalog__filters-select-dropdown">
+                                            <div class="catalog__filters-select-dropdown-inner">
+                                                <ul class="catalog__filters-select-list">
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="year"
+                                                                class="catalog__filters-select-radio-input" value="">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                Все года
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="year"
+                                                                class="catalog__filters-select-radio-input"
+                                                                value="2021">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                2021
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="year"
+                                                                class="catalog__filters-select-radio-input"
+                                                                value="2022">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                2022
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="catalog__filters-select">
+                            <div class="catalog__filters-accordion">
+
+
+                                <button class="catalog__filters-accordion-btn" type="button">
+                                    <svg width="14" height="14" aria-hidden="true">
+                                        <use xlink:href="#arrow-right"></use>
+                                    </svg>
+                                    <span class="catalog__filters-accordion-btn-text">
+                                        Стоимость
+                                    </span>
+                                </button>
+                                <div class="catalog__filters-accordion-content">
+                                    <div class="catalog__filters-accordion-content-inner">
+                                        <button class="catalog__filters-select-btn" type="button">
+                                            <span class="catalog__filters-select-btn-text">
+                                                Стоимость
+                                            </span>
+                                            <svg width="14" height="14" aria-hidden="true">
+                                                <use xlink:href="#arrow-down"></use>
+                                            </svg>
+                                        </button>
+                                        <div class="catalog__filters-select-dropdown">
+                                            <div class="catalog__filters-select-dropdown-inner">
+                                                <ul class="catalog__filters-select-list">
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="price"
+                                                                class="catalog__filters-select-radio-input" value="">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                Любая стоимость
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="price"
+                                                                class="catalog__filters-select-radio-input"
+                                                                value="100 000 — 150 000 ₽">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                100 000 — 150 000 ₽
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="price"
+                                                                class="catalog__filters-select-radio-input"
+                                                                value="150 000 — 200 000 ₽">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                150 000 — 200 000 ₽
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="price"
+                                                                class="catalog__filters-select-radio-input"
+                                                                value="200 000 — 250 000 ₽">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                200 000 — 250 000 ₽
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                    <li class="catalog__filters-select-list-item">
+                                                        <label class="catalog__filters-select-radio">
+                                                            <input type="radio" name="price"
+                                                                class="catalog__filters-select-radio-input"
+                                                                value="250 000 — 300 000 ₽">
+                                                            <span class="catalog__filters-select-radio-text">
+                                                                250 000 — 300 000 ₽
+                                                            </span>
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="catalog__filters-reset-btn" type="reset">
+                            <svg width="14" height="14" aria-hidden="true">
+                                <use xlink:href="#filters-close"></use>
+                            </svg>
+                            Сбросить фильтры
+                        </button>
+                    </div>
+                    <div class="catalog__filters-mobile-btns">
+                        <button class="catalog__filters-mobile-submit" type="submit">
+                            Показать 72
+                        </button>
+                        <button class="catalog__filters-mobile-reset" type="reset">
+                            <svg width="14" height="14" aria-hidden="true">
+                                <use xlink:href="#filters-close"></use>
+                            </svg>
+                            Сбросить фильтры
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="catalog__results">
+        <div class="catalog__results-inner">
+            <ul class="catalog__results-list">
+                {{#each products}}
+                    <li class="catalog__results-list-item">
+                        <a href="#" class="catalog__results-card">
+                            <div class="catalog__results-card-image-container">
+                                <img src="{{ src }}" alt="" class="catalog__results-card-image" loading="lazy">
+                            </div>
+                            <h3 class="catalog__results-card-title">
+                                {{ title }}
+                            </h3>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</section>

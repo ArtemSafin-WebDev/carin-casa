@@ -9,6 +9,7 @@ import smoothScrolling from "./smoothScrolling";
 import homeAnimations from "./homeAnimations";
 import "../css/style.css";
 import reveal from "./reveal";
+import catalogFilters from "./catalogFilters";
 
 document.addEventListener("DOMContentLoaded", () => {
   smoothScrolling();
@@ -19,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
   menu();
   homeAnimations();
   reveal();
+  catalogFilters();
 });
 
 window.addEventListener("load", () => {
