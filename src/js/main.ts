@@ -10,6 +10,7 @@ import homeAnimations from "./homeAnimations";
 import "../css/style.css";
 import reveal from "./reveal";
 import catalogFilters from "./catalogFilters";
+import forms from "./forms";
 
 document.addEventListener("DOMContentLoaded", () => {
   smoothScrolling();
@@ -21,6 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
   homeAnimations();
   reveal();
   catalogFilters();
+  forms();
 });
 
 window.addEventListener("load", () => {

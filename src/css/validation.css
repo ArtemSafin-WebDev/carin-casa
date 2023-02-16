@@ -1,0 +1,9 @@
+.validation-error {
+  color: var(--red);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 125%;
+  letter-spacing: 0.1em;
+  margin-top: 0.8rem;
+}

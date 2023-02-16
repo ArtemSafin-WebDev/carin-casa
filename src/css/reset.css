@@ -65,6 +65,6 @@ textarea {
 
 ::selection {
   color: white;
-  background-color: var(--primary-color);
+  background-color: var(--text-color);
   -webkit-text-fill-color: white;
 }
