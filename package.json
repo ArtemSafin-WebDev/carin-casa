@@ -27,6 +27,7 @@
     "detect-it": "^4.0.1",
     "gsap": "^3.11.4",
     "inputmask": "^5.0.7",
+    "lodash": "^4.17.21",
     "swiper": "^8.4.7",
     "validator": "^13.9.0"
   }

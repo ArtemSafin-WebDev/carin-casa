@@ -1,7 +1,10 @@
 <section class="contacts">
     <div class="contacts__intro">
         <div class="contacts__intro-bg">
-            <img src="/images/contacts-video-preview.webp" alt="" class="contacts__intro-bg-image">
+            <picture>
+                <source srcset="/images/contacts-mobile-bg.webp" media="(max-width: 640px)" />
+                <img src="/images/contacts-video-preview.webp" alt="" class="contacts__intro-bg-image" />
+            </picture>
             <video src="/video/contacts.mp4" autoplay="" muted="" loop="" playsinline="" preload="none"
                 class="contacts__intro-video"></video>
         </div>
@@ -121,10 +124,15 @@
             </div>
         </div>
         <div class="contacts__map">
-            <picture>
-                <source srcset="/images/contacts-map-mobile.webp" media="(max-width: 640px)" />
-                <img src="/images/contacts-map-desktop.webp" alt="Карта" class="contacts__map-image" />
-            </picture>
+            <div class="contacts__map-wrapper">
+                <picture>
+                    <source srcset="/images/contacts-map-mobile.webp" media="(max-width: 640px)" />
+                    <img src="/images/contacts-map-desktop.webp" alt="Карта" class="contacts__map-image" />
+                </picture>
+            </div>
+            <a href="#" class="contacts__map-yandex">
+                Открыть в яндекс картах
+            </a>
         </div>
     </div>
 </section>

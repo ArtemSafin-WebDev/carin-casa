@@ -12,11 +12,6 @@ export default function intro() {
     document.querySelectorAll(SELECTOR)
   );
   elements.forEach((element) => {
-    const videoWrapper = element.querySelector<HTMLDivElement>(
-      ".intro__video-wrapper"
-    );
-    const videoElement = element.querySelector<HTMLVideoElement>("video");
-
     const bgSlider = element.querySelector<HTMLDivElement>(".intro__bg-slider");
     const bgSliderContainer = element.querySelector<HTMLDivElement>(
       ".intro__bg-slider .swiper"
@@ -90,13 +85,5 @@ export default function intro() {
         });
       });
     }
-
-    videoElement?.addEventListener("canplaythrough", () => {
-      console.log("Can play event");
-      gsap.to(videoWrapper, {
-        autoAlpha: 1,
-        duration: 0.4,
-      });
-    });
   });
 }

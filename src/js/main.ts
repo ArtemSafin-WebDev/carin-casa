@@ -7,10 +7,12 @@ import menu from "./menu";
 import intro from "./intro";
 import smoothScrolling from "./smoothScrolling";
 import homeAnimations from "./homeAnimations";
-import "../css/style.css";
 import reveal from "./reveal";
 import catalogFilters from "./catalogFilters";
 import forms from "./forms";
+import videos from "./videos";
+import mapScrolling from "./mapScrolling";
+import "../css/style.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   smoothScrolling();
@@ -23,6 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
   reveal();
   catalogFilters();
   forms();
+  videos();
+  mapScrolling();
 });
 
 window.addEventListener("load", () => {
