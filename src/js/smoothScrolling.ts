@@ -12,23 +12,5 @@ export default function smoothScrolling() {
       smooth: 0.6,
       effects: true,
     });
-
-    // let previousWidth = 0;
-
-    // window.addEventListener(
-    //   "resize",
-    //   debounce(() => {
-    //     setTimeout(() => {
-    //       if (previousWidth !== window.innerWidth) {
-    //         ScrollTrigger.refresh();
-    //       }
-    //       previousWidth = window.innerWidth;
-    //     }, 5000);
-    //   }, 200)
-    // );
-    // @ts-ignore
-    window.refresh = () => {
-      ScrollTrigger.refresh();
-    };
   }
 }
