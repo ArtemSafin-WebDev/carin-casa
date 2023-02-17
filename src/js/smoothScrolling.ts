@@ -2,7 +2,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "./plugins/scrollSmoother.js";
 import { primaryInput } from "detect-it";
-// import { debounce } from "lodash";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
