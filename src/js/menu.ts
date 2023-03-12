@@ -21,8 +21,6 @@ export default function menu() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

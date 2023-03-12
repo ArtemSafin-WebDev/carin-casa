@@ -40,8 +40,6 @@ export default function featureShowMore() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

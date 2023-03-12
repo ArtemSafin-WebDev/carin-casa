@@ -38,8 +38,6 @@ export default function forms() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

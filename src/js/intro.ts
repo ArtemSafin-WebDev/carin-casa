@@ -156,8 +156,6 @@ export default function intro() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

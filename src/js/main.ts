@@ -19,6 +19,10 @@ import contactsParallax from "./contactsParallax";
 import contactsIntroAnimation from "./contactsIntroAnimation";
 import catalogIntroAnimation from "./catalogIntroAnimation";
 import introMobileSlider from "./introMobileSlider";
+import similarProductsSlider from "./similarProductsSlider";
+import productSlider from "./productSlider";
+import anchorLinks from "./anchorScrolling";
+import productNav from "./productNav";
 
 document.addEventListener("DOMContentLoaded", () => {
   pageTransitions();
@@ -38,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
   contactsIntroAnimation();
   catalogIntroAnimation();
   introMobileSlider();
+  similarProductsSlider();
+  productSlider();
+  anchorLinks();
+  productNav();
 });
 
 window.addEventListener("load", () => {

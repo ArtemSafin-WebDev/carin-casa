@@ -4,8 +4,9 @@ import { ScrollSmoother } from "./plugins/ScrollSmoother.js";
 import { primaryInput } from "detect-it";
 import { PAGE_ENTER } from "./constants/pageEnter.js";
 import { PAGE_LEAVE } from "./constants/pageLeave.js";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, ScrollToPlugin);
 
 //@ts-ignore
 window.refresh = () => {
@@ -14,6 +15,7 @@ window.refresh = () => {
 
 export default function smoothScrolling() {
   let instances = [];
+
   function initialize(context = document) {
     if (instances.length) return;
     const wrapper = context.querySelector("#smooth-wrapper");
@@ -29,12 +31,17 @@ export default function smoothScrolling() {
 
       console.log("Creating smooth scroll");
 
-      instances.push(instance);
+      instances.push({
+        scroll: instance,
+      });
     }
   }
 
   function destroy() {
-    instances.forEach((instance) => instance.kill());
+    instances.forEach((instance) => {
+      const { scroll } = instance;
+      scroll.kill();
+    });
     instances = [];
   }
 

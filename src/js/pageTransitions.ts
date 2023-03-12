@@ -8,7 +8,18 @@ import { mainLoader, overlayIn, overlayOut } from "./transitions";
 barba.use(barbaPrefetch);
 
 export default function pageTransitions() {
-  if (document.body.classList.contains("admin-bar")) return;
+  if (document.body.classList.contains("admin-bar")) {
+    const event = new CustomEvent(PAGE_ENTER, {
+      bubbles: true,
+      detail: {
+        container: document,
+      },
+    });
+
+    document.dispatchEvent(event);
+
+    return;
+  }
   barba.init({
     transitions: [
       {

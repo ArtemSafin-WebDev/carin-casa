@@ -3,9 +3,9 @@ import "swiper/css";
 import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
 
-export default function detailSlider() {
+export default function productSlider() {
   let instances: Swiper[] = [];
-  const SELECTOR = ".js-detail-slider";
+  const SELECTOR = ".js-product-slider";
 
   function initialize(context = document) {
     if (instances.length) return;
@@ -16,10 +16,10 @@ export default function detailSlider() {
     elements.forEach((element) => {
       const container = element.querySelector<HTMLDivElement>(".swiper");
       const prev = element.querySelector<HTMLButtonElement>(
-        ".detail__slider-arrow--prev"
+        ".product__slider-arrow--prev"
       );
       const next = element.querySelector<HTMLButtonElement>(
-        ".detail__slider-arrow--next"
+        ".product__slider-arrow--next"
       );
 
       let options: SwiperOptions = {
@@ -62,8 +62,6 @@ export default function detailSlider() {
         instances.push(instance);
       }
     });
-
-    console.log("Initializing detail slider");
   }
 
   function destroy() {

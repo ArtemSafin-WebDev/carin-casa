@@ -544,8 +544,6 @@ export default function catalogFilters() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

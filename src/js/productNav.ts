@@ -1,28 +1,27 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
 
 gsap.registerPlugin(ScrollTrigger);
 
-function reveal(selector = ".js-reveal-block") {
+export default function productNav() {
   let instances = [];
 
   function initialize(context = document) {
     if (instances.length) return;
     const elements: HTMLElement[] = Array.from(
-      context.querySelectorAll(selector)
+      context.querySelectorAll(".product__nav")
     );
 
-    console.log("Creating revealable elements", elements);
     elements.forEach((element) => {
       const instance = ScrollTrigger.create({
         trigger: element,
-        start: "top+=30 bottom",
-        end: "bottom top",
-        onEnter: () => {
-          element.classList.add("revealed");
-        },
+        start: "top top",
+        end: 99999999,
+        pin: true,
+        pinSpacing: false,
       });
 
       instances.push(instance);
@@ -42,5 +41,3 @@ function reveal(selector = ".js-reveal-block") {
     initialize(event.detail.container);
   });
 }
-
-export default reveal;

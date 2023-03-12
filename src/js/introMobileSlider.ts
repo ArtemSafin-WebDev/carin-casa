@@ -70,8 +70,6 @@ export default function introMobileSlider() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

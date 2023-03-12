@@ -69,8 +69,6 @@ export default function hoverCards() {
     instances = [];
   }
 
-  initialize();
-
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
   });

@@ -1,0 +1,246 @@
+<section class="product">
+    <div class="product__intro">
+        <div class="product__intro-bg">
+            <img src="/images/product-intro.webp" alt="" class="product__intro-bg-image">
+        </div>
+        <div class="product__intro-content">
+            <div class="product__intro-breadcrumbs">
+                <a href="#">
+                    Главная
+                </a>
+                /
+                <a href="#">
+                    Каталог
+                </a>
+            </div>
+            <h1 class="product__intro-main-heading">
+                PIERRE
+            </h1>
+            <div class="product__intro-year">
+                2021
+            </div>
+            <div class="product__intro-image-wrapper">
+                <img src="/images/product-detail-preview.webp" alt="" class="product__intro-image">
+            </div>
+        </div>
+    </div>
+    <div class="product__nav">
+        <ul class="product__nav-list">
+            <li class="product__nav-list-item">
+                <a href="#" class="product__nav-link">
+                    Об изделии
+                </a>
+            </li>
+            <li class="product__nav-list-item">
+                <a href="#" class="product__nav-link">
+                    Стоимость
+                </a>
+            </li>
+            <li class="product__nav-list-item">
+                <a href="#gallery" class="product__nav-link">
+                    Фотографии
+                </a>
+            </li>
+            <li class="product__nav-list-item">
+                <a href="#" class="product__nav-link">
+                    Материалы
+                </a>
+            </li>
+            <li class="product__nav-list-item">
+                <a href="#similar" class="product__nav-link">
+                    Похожие модели
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="product__gallery" id="gallery">
+        <div class="product__gallery-inner">
+            <div class="product__slider js-product-slider">
+                <button class="product__slider-arrow product__slider-arrow--prev">
+                    <svg width="14" height="14" aria-hidden="true">
+                        <use xlink:href="#slider-arrow-left"></use>
+                    </svg>
+                </button>
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        {{#each detail}}
+                            <div class="swiper-slide">
+                                <div class="product__slider-card">
+                                    <div class="product__slider-card-parallax">
+                                        <img src="{{ src }}" alt="" class="product__slider-card-image">
+                                    </div>
+                                </div>
+                            </div>
+                        {{/each}}
+                    </div>
+                </div>
+                <button class="product__slider-arrow product__slider-arrow--next">
+                    <svg width="14" height="14" aria-hidden="true">
+                        <use xlink:href="#slider-arrow-right"></use>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="product__large-image">
+        <div class="product__large-image-wrapper">
+            <img src="/images/product-large-image.webp" alt="" class="product__large-image-picture">
+        </div>
+    </div>
+    <div class="product__has-questions">
+        <div class="product__has-questions-inner">
+            <h2 class="product__has-questions-heading">
+                Остались вопросы?
+            </h2>
+
+            <div class="product__has-questions-row">
+                <div class="product__has-questions-left-col">
+                    <div class="product__has-questions-text">
+                        Пожалуйста, направьте ваш запрос по форме, представленной ниже. Мы свяжемся с вами в ближайшее
+                        время.
+                    </div>
+                    <form action="/" method="POST" class="product__has-questions-form js-form">
+                        <div class="product__has-questions-form-fields">
+                            <div class="product__has-questions-form-field">
+                                <label class="product__has-questions-form-label">
+                                    <input type="text" class="product__has-questions-form-input" name="your-name"
+                                        placeholder="Имя" required="">
+                                    <span class="product__has-questions-form-label-text">
+                                        Имя
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="product__has-questions-form-field">
+                                <label class="product__has-questions-form-label">
+                                    <input type="tel" class="product__has-questions-form-input" name="your-phone"
+                                        placeholder="Телефон" required="">
+                                    <span class="product__has-questions-form-label-text">
+                                        Телефон
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="product__has-questions-form-field product__has-questions-form-field--fullwidth">
+                                <label class="product__has-questions-form-label">
+                                    <input type="text" class="product__has-questions-form-input" name="your-question"
+                                        placeholder="Опишите свой вопрос">
+                                    <span class="product__has-questions-form-label-text">
+                                        Опишите свой вопрос
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="product__has-questions-form-submit" type="submit">
+                            Отправить
+                        </button>
+                        <div class="product__has-questions-form-policy">
+                            Нажимая кнопку «Отправить» вы соглашаетесь на обработку персональных данных
+                        </div>
+                    </form>
+                </div>
+                <div class="product__has-questions-right-col">
+                    <img src="/images/product-detail-preview.webp" alt="" class="product__has-questions-image">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product__similar-products" id="similar">
+        <div class="product__similar-products-inner">
+
+
+            <div class="product__similar-products-top-row">
+                <h2 class="product__similar-products-heading">
+                    Похожие модели
+                </h2>
+                <a href="#" class="product__similar-products-show-all">
+                    Смотреть все изделия
+                </a>
+            </div>
+            <div class="product__similar-products-slider js-similar-products">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="#" class="product__similar-products-slider-card">
+                                <div class="product__similar-products-slider-card-image-container">
+                                    <img src="/images/similar-products/1.webp" alt=""
+                                        class="product__similar-products-slider-card-image">
+                                </div>
+                                <h3 class="product__similar-products-slider-card-title">
+                                    PIERRE
+                                </h3>
+                                <div class="product__similar-products-slider-card-text">
+                                    Обеденный стол со столешницей из премиальной керамики на базе или в натуральном
+                                    шпоне
+                                    дерева
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#" class="product__similar-products-slider-card">
+                                <div class="product__similar-products-slider-card-image-container">
+                                    <img src="/images/similar-products/2.webp" alt=""
+                                        class="product__similar-products-slider-card-image">
+                                </div>
+                                <h3 class="product__similar-products-slider-card-title">
+                                    Loran
+                                </h3>
+                                <div class="product__similar-products-slider-card-text">
+                                    Обеденный стол со столешницей из премиальной керамики на базе или в натуральном
+                                    шпоне
+                                    дерева
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#" class="product__similar-products-slider-card">
+                                <div class="product__similar-products-slider-card-image-container">
+                                    <img src="/images/similar-products/3.webp" alt=""
+                                        class="product__similar-products-slider-card-image">
+                                </div>
+                                <h3 class="product__similar-products-slider-card-title">
+                                    Pyramid
+                                </h3>
+                                <div class="product__similar-products-slider-card-text">
+                                    Обеденный стол со столешницей из премиальной керамики на базе или в натуральном
+                                    шпоне
+                                    дерева
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#" class="product__similar-products-slider-card">
+                                <div class="product__similar-products-slider-card-image-container">
+                                    <img src="/images/similar-products/4.webp" alt=""
+                                        class="product__similar-products-slider-card-image">
+                                </div>
+                                <h3 class="product__similar-products-slider-card-title">
+                                    Loran wood
+                                </h3>
+                                <div class="product__similar-products-slider-card-text">
+                                    Обеденный стол со столешницей из премиальной керамики на базе или в натуральном
+                                    шпоне
+                                    дерева
+                                </div>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="#" class="product__similar-products-slider-card">
+                                <div class="product__similar-products-slider-card-image-container">
+                                    <img src="/images/similar-products/5.webp" alt=""
+                                        class="product__similar-products-slider-card-image">
+                                </div>
+                                <h3 class="product__similar-products-slider-card-title">
+                                    izi
+                                </h3>
+                                <div class="product__similar-products-slider-card-text">
+                                    Обеденный стол со столешницей из премиальной керамики на базе или в натуральном
+                                    шпоне
+                                    дерева
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
