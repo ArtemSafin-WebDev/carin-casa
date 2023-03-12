@@ -21,9 +21,6 @@ export default class Menu {
   private submenuInstances: Array<{
     btn: HTMLButtonElement | HTMLLinkElement;
     btnHandler: (event: MouseEvent) => void;
-    content: HTMLElement;
-    contentMouseLeaveHandler: () => void;
-    linksInstances: Array<[HTMLElement, () => void]>;
   }> = [];
 
   constructor(header: HTMLElement) {
@@ -97,49 +94,11 @@ export default class Menu {
     this.itemsWithSubmenu.forEach((item) => {
       const btn = item.querySelector<HTMLLinkElement>(".page-header__nav-link");
       const content = item.querySelector<HTMLElement>(".page-header__submenu");
-      const submenuInner = item.querySelector(".page-header__submenu-inner");
-      const links = Array.from(
-        item.querySelectorAll<HTMLLinkElement>(".page-header__submenu-link")
-      );
-      const blocks = Array.from(
-        item.querySelectorAll(".page-header__submenu-products-block")
-      );
-
-      const setActiveBlock = (index: number) => {
-        if (window.matchMedia("(max-width: 640px)").matches) return;
-        const state = Flip.getState(submenuInner);
-        links.forEach((link) => link.classList.remove("active"));
-        blocks.forEach((block) => block.classList.remove("active"));
-        if (index !== -1) {
-          links[index]?.classList.add("active");
-          blocks[index]?.classList.add("active");
-        }
-
-        Flip.from(state, {
-          ease: "power1.inOut",
-          duration: 0.4,
-        });
-      };
-
-      let linksInstances = [];
-
-      links.forEach((link, linkIndex) => {
-        const handler = () => {
-          setActiveBlock(linkIndex);
-        };
-        link.addEventListener("mouseenter", handler);
-        linksInstances.push([link, handler]);
-      });
-
-      const contentMouseLeaveHandler = () => {
-        setActiveBlock(-1);
-      };
-
-      content.addEventListener("mouseleave", contentMouseLeaveHandler);
 
       const btnHandler = (event: MouseEvent) => {
         if (!window.matchMedia("(max-width: 640px)").matches) return;
         event.preventDefault();
+        event.stopPropagation();
         if (btn.classList.contains("open")) {
           this.closeMobileSubmenu(content);
         } else {
@@ -153,29 +112,14 @@ export default class Menu {
       this.submenuInstances.push({
         btn,
         btnHandler,
-        content,
-        contentMouseLeaveHandler,
-        linksInstances,
       });
     });
   }
 
   private removeSubmenuHandlers() {
     this.submenuInstances.forEach((instance) => {
-      const {
-        btn,
-        btnHandler,
-        content,
-        contentMouseLeaveHandler,
-        linksInstances,
-      } = instance;
-
+      const { btn, btnHandler } = instance;
       btn.removeEventListener("click", btnHandler);
-      content.removeEventListener("mouseleave", contentMouseLeaveHandler);
-      linksInstances.forEach((instance) => {
-        const [link, handler] = instance;
-        link.removeEventListener("mouseenter", handler);
-      });
     });
 
     this.submenuInstances = [];

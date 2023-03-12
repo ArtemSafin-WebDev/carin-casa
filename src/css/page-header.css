@@ -644,26 +644,6 @@
   .page-header__submenu-products {
     position: relative;
   }
-
-  .page-header__submenu-products-block {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: auto;
-    z-index: 5;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.4s, visibility 0s linear 0.4s;
-
-    &.active {
-      opacity: 1;
-      visibility: inherit;
-      transition: opacity 0.4s, visibility 0.4s;
-      z-index: 10;
-      position: relative;
-    }
-  }
 }
 
 .page-header__submenu-products {

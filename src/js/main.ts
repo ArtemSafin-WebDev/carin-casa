@@ -17,6 +17,8 @@ import pageTransitions from "./pageTransitions";
 import "../css/style.css";
 import contactsParallax from "./contactsParallax";
 import contactsIntroAnimation from "./contactsIntroAnimation";
+import catalogIntroAnimation from "./catalogIntroAnimation";
+import introMobileSlider from "./introMobileSlider";
 
 document.addEventListener("DOMContentLoaded", () => {
   pageTransitions();
@@ -34,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
   videos();
   mapScrolling();
   contactsIntroAnimation();
+  catalogIntroAnimation();
+  introMobileSlider();
 });
 
 window.addEventListener("load", () => {
