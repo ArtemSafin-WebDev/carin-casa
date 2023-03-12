@@ -52,6 +52,9 @@ class Validator {
   private localization: Localization;
   private locale: string;
 
+  private textInputsPairs: Array<[HTMLInputElement, () => void]> = [];
+  private selectInputsPairs: Array<[HTMLInputElement, () => void]> = [];
+
   constructor(
     form: HTMLFormElement,
     localization: Localization = defaultLocalization
@@ -75,12 +78,15 @@ class Validator {
     this.selects = Array.from(form.querySelectorAll("[data-required-select]"));
 
     this.textFields.forEach((field) => {
-      field.addEventListener("input", () => {
+      const handler = () => {
         if (this.hasBeenValidated) {
           const result = this.validateTextField(field);
           this.showTextFieldMessage(field, result);
         }
-      });
+      };
+      field.addEventListener("input", handler);
+
+      this.textInputsPairs.push([field, handler]);
     });
 
     this.selects.forEach((select) => {
@@ -91,18 +97,18 @@ class Validator {
       );
 
       selectInputs.forEach((input) => {
-        input.addEventListener("change", () => {
+        const handler = () => {
           if (this.hasBeenValidated) {
             const result = this.validateSelect(select);
             this.showSelectFieldMessage(select, result);
           }
-        });
+        };
+        input.addEventListener("change", handler);
+        this.selectInputsPairs.push([input, handler]);
       });
     });
 
-    this.form.addEventListener("reset", () => {
-      this.reset();
-    });
+    this.form.addEventListener("reset", this.reset);
 
     this.initializeMasks();
   }
@@ -250,6 +256,18 @@ class Validator {
     this.form
       .querySelectorAll(".validation-error")
       .forEach((message) => message.remove());
+
+    this.textInputsPairs.forEach((pair) => {
+      const [input, handler] = pair;
+      input.removeEventListener("input", handler);
+    });
+
+    this.selectInputsPairs.forEach((pair) => {
+      const [input, handler] = pair;
+      input.removeEventListener("change", handler);
+    });
+
+    this.form.removeEventListener("reset", this.reset);
   }
 
   get valid(): boolean {

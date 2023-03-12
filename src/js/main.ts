@@ -6,27 +6,34 @@ import featureShowMore from "./feature";
 import menu from "./menu";
 import intro from "./intro";
 import smoothScrolling from "./smoothScrolling";
-import homeAnimations from "./homeAnimations";
+import introParallax from "./introParallax";
 import reveal from "./reveal";
 import catalogFilters from "./catalogFilters";
 import forms from "./forms";
 import videos from "./videos";
 import mapScrolling from "./mapScrolling";
+import pageTransitions from "./pageTransitions";
+
 import "../css/style.css";
+import contactsParallax from "./contactsParallax";
+import contactsIntroAnimation from "./contactsIntroAnimation";
 
 document.addEventListener("DOMContentLoaded", () => {
+  pageTransitions();
   smoothScrolling();
   hoverCards();
   detailSlider();
   featureShowMore();
   intro();
   menu();
-  homeAnimations();
+  introParallax();
+  contactsParallax();
   reveal();
   catalogFilters();
   forms();
   videos();
   mapScrolling();
+  contactsIntroAnimation();
 });
 
 window.addEventListener("load", () => {

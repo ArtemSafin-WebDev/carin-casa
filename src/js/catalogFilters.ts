@@ -3,6 +3,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { isMobile } from "./utils";
 import { Flip } from "gsap/Flip";
+import { PAGE_ENTER } from "./constants/pageEnter";
+import { PAGE_LEAVE } from "./constants/pageLeave";
 
 gsap.registerPlugin(ScrollTrigger, Flip);
 
@@ -22,57 +24,53 @@ interface Select {
 }
 
 export default function catalogFilters() {
-  const elements: HTMLElement[] = Array.from(
-    document.querySelectorAll(".js-catalog-filters")
-  );
+  let instances = [];
 
-  elements.forEach((element) => {
-    let filtersOpen = false;
-    const accordions = Array.from(
-      element.querySelectorAll<HTMLDivElement>(".catalog__filters-accordion")
-    );
-    const selects = Array.from(
-      element.querySelectorAll<HTMLDivElement>(".catalog__filters-select")
-    );
-    const filtersModal = element.querySelector<HTMLDivElement>(
-      ".catalog__filters-modal"
+  function initialize(context = document) {
+    if (instances.length) return;
+    const elements: HTMLElement[] = Array.from(
+      context.querySelectorAll(".js-catalog-filters")
     );
 
-    const filtersOpenBtn = element.querySelector<HTMLButtonElement>(
-      ".catalog__filters-open-btn"
-    );
-    const filtersCloseBtn = element.querySelector<HTMLButtonElement>(
-      ".catalog__filters-modal-close"
-    );
+    elements.forEach((element) => {
+      let filtersOpen = false;
+      const accordions = Array.from(
+        element.querySelectorAll<HTMLDivElement>(".catalog__filters-accordion")
+      );
+      const selects = Array.from(
+        element.querySelectorAll<HTMLDivElement>(".catalog__filters-select")
+      );
+      const filtersModal = element.querySelector<HTMLDivElement>(
+        ".catalog__filters-modal"
+      );
 
-    const mobileSubmit = element.querySelector<HTMLButtonElement>(
-      ".catalog__filters-mobile-submit"
-    );
+      const filtersOpenBtn = element.querySelector<HTMLButtonElement>(
+        ".catalog__filters-open-btn"
+      );
+      const filtersCloseBtn = element.querySelector<HTMLButtonElement>(
+        ".catalog__filters-modal-close"
+      );
 
-    const mobileReset = element.querySelector<HTMLButtonElement>(
-      ".catalog__filters-mobile-reset"
-    );
+      const mobileSubmit = element.querySelector<HTMLButtonElement>(
+        ".catalog__filters-mobile-submit"
+      );
 
-    const range = element.querySelector<HTMLDivElement>(
-      ".catalog__filters-range"
-    );
+      const mobileReset = element.querySelector<HTMLButtonElement>(
+        ".catalog__filters-mobile-reset"
+      );
 
-    const form = element.querySelector("form");
+      const range = element.querySelector<HTMLDivElement>(
+        ".catalog__filters-range"
+      );
 
-    if (range) {
+      const form = element.querySelector("form");
+
       const slider = range.querySelector<HTMLElement>(
         ".catalog__filters-range-slider"
       );
       const minus = range.querySelector(".catalog__filters-range-btn--minus");
       const plus = range.querySelector(".catalog__filters-range-btn--plus");
       let dragging = false;
-
-      slider.addEventListener("pointerenter", () => {
-        dragging = false;
-      });
-      slider.addEventListener("pointerdown", () => {
-        dragging = true;
-      });
 
       let showOnDesktop = 1;
       let showOnMobile = 1;
@@ -180,19 +178,14 @@ export default function catalogFilters() {
         }
       };
 
-      slider.addEventListener("pointermove", handleMouseMove);
+      const handlePointerDown = () => {
+        dragging = true;
+      };
+      const handlePointerUp = () => {
+        dragging = false;
+      };
 
-      slider.addEventListener("pointerup", () => {
-        dragging = false;
-      });
-      slider.addEventListener("pointercancel", () => {
-        dragging = false;
-      });
-      slider.addEventListener("pointerleave", () => {
-        dragging = false;
-      });
-
-      plus.addEventListener("click", (event) => {
+      const handlePlusClick = (event) => {
         event.preventDefault();
         if (showOnDesktop < 4) {
           showOnDesktop = ++showOnDesktop;
@@ -203,8 +196,9 @@ export default function catalogFilters() {
           showOnMobile = ++showOnMobile;
           setMobileProgress(showOnMobile);
         }
-      });
-      minus.addEventListener("click", (event) => {
+      };
+
+      const handleMinusClick = (event) => {
         event.preventDefault();
         if (showOnDesktop > 1) {
           showOnDesktop = --showOnDesktop;
@@ -215,266 +209,348 @@ export default function catalogFilters() {
           showOnMobile = --showOnMobile;
           setMobileProgress(showOnMobile);
         }
-      });
-    }
+      };
 
-    const checkForm = () => {
-      const data = new FormData(form);
+      slider.addEventListener("pointerenter", handlePointerUp);
+      slider.addEventListener("pointerdown", handlePointerDown);
+      slider.addEventListener("pointermove", handleMouseMove);
+      slider.addEventListener("pointerup", handlePointerUp);
+      slider.addEventListener("pointercancel", handlePointerUp);
+      slider.addEventListener("pointerleave", handlePointerUp);
+      plus.addEventListener("click", handlePlusClick);
+      minus.addEventListener("click", handleMinusClick);
 
-      let entries = [];
+      const checkForm = () => {
+        const data = new FormData(form);
 
-      for (const pair of data.entries()) {
-        const key = pair[0] as string;
-        const value = pair[1] as string;
+        let entries = [];
 
-        if (key === "category") continue;
-        if (value.trim() !== "") {
-          entries.push({
-            [key]: value,
-          });
-        }
-      }
+        for (const pair of data.entries()) {
+          const key = pair[0] as string;
+          const value = pair[1] as string;
 
-      if (entries.length) {
-        form.classList.add("filters-applied");
-      } else {
-        form.classList.remove("filters-applied");
-      }
-    };
-
-    checkForm();
-
-    const openFilters = () => {
-      if (filtersOpen) return;
-      filtersModal.classList.add("active");
-      disableBodyScroll(filtersModal);
-      filtersOpen = true;
-    };
-
-    const closeFilters = () => {
-      if (!filtersOpen) return;
-      filtersModal.classList.remove("active");
-      clearAllBodyScrollLocks();
-      filtersOpen = false;
-    };
-
-    const openAccordion = (element) => {
-      const state = Flip.getState([element]);
-      element.parentElement.classList.add("active");
-
-      Flip.from(state, {
-        ease: "power1.inOut",
-        duration: 0.4,
-      });
-    };
-    const closeAccordion = (element) => {
-      const state = Flip.getState([element]);
-      element.parentElement.classList.remove("active");
-
-      Flip.from(state, {
-        ease: "power1.inOut",
-        duration: 0.4,
-      });
-    };
-
-    filtersOpenBtn.addEventListener("click", (event: MouseEvent) => {
-      event.preventDefault();
-      openFilters();
-    });
-
-    filtersCloseBtn.addEventListener("click", (event: MouseEvent) => {
-      event.preventDefault();
-      closeFilters();
-    });
-
-    mobileSubmit.addEventListener("click", (event) => {
-      event.preventDefault();
-      closeFilters();
-    });
-
-    mobileReset.addEventListener("click", () => {
-      closeFilters();
-    });
-
-    let accordionsInstances: Accordion[] = [];
-
-    function initAccordions() {
-      accordions.forEach((accordion) => {
-        const btn = accordion.querySelector<HTMLButtonElement>(
-          ".catalog__filters-accordion-btn"
-        );
-        const content = accordion.querySelector<HTMLDivElement>(
-          ".catalog__filters-accordion-content"
-        );
-
-        const handler = (event: MouseEvent) => {
-          event.preventDefault();
-          if (accordion.classList.contains("active")) {
-            closeAccordion(content);
-          } else {
-            openAccordion(content);
+          if (key === "category") continue;
+          if (value.trim() !== "") {
+            entries.push({
+              [key]: value,
+            });
           }
-        };
+        }
 
-        btn.addEventListener("click", handler);
+        if (entries.length) {
+          form.classList.add("filters-applied");
+        } else {
+          form.classList.remove("filters-applied");
+        }
+      };
 
-        accordionsInstances.push({
-          element: accordion,
-          handler,
+      checkForm();
+
+      const openFilters = () => {
+        if (filtersOpen) return;
+        filtersModal.classList.add("active");
+        disableBodyScroll(filtersModal);
+        filtersOpen = true;
+      };
+
+      const closeFilters = () => {
+        if (!filtersOpen) return;
+        filtersModal.classList.remove("active");
+        clearAllBodyScrollLocks();
+        filtersOpen = false;
+      };
+
+      const openAccordion = (element) => {
+        const state = Flip.getState([element]);
+        element.parentElement.classList.add("active");
+
+        Flip.from(state, {
+          ease: "power1.inOut",
+          duration: 0.4,
         });
-      });
-    }
+      };
+      const closeAccordion = (element) => {
+        const state = Flip.getState([element]);
+        element.parentElement.classList.remove("active");
 
-    function destroyAccordions() {
-      accordionsInstances.forEach((instance) => {
-        const { element, handler } = instance;
-        element.removeEventListener("click", handler);
-      });
-      accordionsInstances = [];
-    }
+        Flip.from(state, {
+          ease: "power1.inOut",
+          duration: 0.4,
+        });
+      };
 
-    initAccordions();
+      filtersOpenBtn.addEventListener("click", openFilters);
 
-    let selectsInstances: Select[] = [];
+      filtersCloseBtn.addEventListener("click", closeFilters);
 
-    function initializeSelects() {
-      selects.forEach((select) => {
-        const form = select.closest("form");
-        const btn = select.querySelector<HTMLButtonElement>(
-          ".catalog__filters-select-btn"
-        );
-        const btnText = select.querySelector<HTMLElement>(
-          ".catalog__filters-select-btn-text"
-        );
+      mobileSubmit.addEventListener("click", closeFilters);
 
-        let open = false;
-        const openSelect = () => {
-          select.classList.add("open");
-          open = true;
-        };
-        const closeSelect = () => {
-          select.classList.remove("open");
-          open = false;
-        };
+      mobileReset.addEventListener("click", closeFilters);
 
-        const inputs = Array.from(
-          select.querySelectorAll<HTMLInputElement>('input[type="radio"]')
-        );
+      let accordionsInstances: Accordion[] = [];
 
-        const setPlaceholderValue = () => {
-          select.classList.add("placeholder-shown");
-          const placeholderItem = inputs.find(
-            (input) => input.value?.trim() === ""
+      function initAccordions() {
+        accordions.forEach((accordion) => {
+          const btn = accordion.querySelector<HTMLButtonElement>(
+            ".catalog__filters-accordion-btn"
           );
-          if (!placeholderItem) return;
-          const itemTextElement = placeholderItem.nextElementSibling;
-          if (!itemTextElement) return;
+          const content = accordion.querySelector<HTMLDivElement>(
+            ".catalog__filters-accordion-content"
+          );
 
-          btnText.textContent = itemTextElement.textContent;
-        };
+          const handler = (event: MouseEvent) => {
+            event.preventDefault();
+            if (accordion.classList.contains("active")) {
+              closeAccordion(content);
+            } else {
+              openAccordion(content);
+            }
+          };
 
-        const setSelected = () => {
-          select.classList.remove("placeholder-shown");
-          const selected = inputs.find((input) => input.checked);
-          if (!selected || selected.value.trim() === "") {
-            setPlaceholderValue();
-          } else {
-            const itemTextElement = selected.nextElementSibling;
-            if (!itemTextElement) return;
-            btnText.textContent = itemTextElement.textContent;
-          }
-          closeSelect();
-          checkForm();
-        };
+          btn.addEventListener("click", handler);
 
-        const buttonHandler = (event: MouseEvent) => {
-          event.preventDefault();
-          if (!open) {
-            openSelect();
-          } else {
-            closeSelect();
-          }
-        };
-
-        btn.addEventListener("click", buttonHandler);
-
-        inputs.forEach((input) => {
-          input.addEventListener("change", setSelected);
+          accordionsInstances.push({
+            element: accordion,
+            handler,
+          });
         });
+      }
 
-        const outsideClickHandler = (event: MouseEvent) => {
-          const target = event.target as HTMLElement;
-
-          if (select.contains(target)) return;
-          closeSelect();
-        };
-
-        document.addEventListener("click", outsideClickHandler);
-
-        const formResetHandler = () => {
-          inputs.forEach((input) => (input.checked = false));
-          setSelected();
-          closeSelect();
-          checkForm();
-        };
-
-        form.addEventListener("reset", formResetHandler);
-
-        const selected = inputs.find((input) => input.checked);
-        if (!selected) {
-          const empty = inputs.find((input) => input.value.trim() === "");
-          if (empty) {
-            empty.checked = true;
-          }
-        }
-        setSelected();
-
-        selectsInstances.push({
-          inputs,
-          setSelected,
-          form,
-          formResetHandler,
-          btn,
-          buttonHandler,
-          outsideClickHandler,
+      function destroyAccordions() {
+        accordionsInstances.forEach((instance) => {
+          const { element, handler } = instance;
+          element.removeEventListener("click", handler);
         });
-      });
-    }
+        accordionsInstances = [];
+      }
 
-    function destroySelects() {
-      selectsInstances.forEach((instance) => {
-        const {
-          inputs,
-          setSelected,
-          form,
-          formResetHandler,
-          btn,
-          buttonHandler,
-          outsideClickHandler,
-        } = instance;
-
-        inputs.forEach((input) =>
-          input.removeEventListener("change", setSelected)
-        );
-
-        form.removeEventListener("reset", formResetHandler);
-
-        btn.removeEventListener("click", buttonHandler);
-
-        document.removeEventListener("click", outsideClickHandler);
-
-        checkForm();
-      });
-      selectsInstances = [];
-    }
-
-    initializeSelects();
-
-    document.addEventListener("reinitfilters", () => {
-      destroyAccordions();
-      destroySelects();
       initAccordions();
+
+      let selectsInstances: Select[] = [];
+
+      function initializeSelects() {
+        selects.forEach((select) => {
+          const form = select.closest("form");
+          const btn = select.querySelector<HTMLButtonElement>(
+            ".catalog__filters-select-btn"
+          );
+          const btnText = select.querySelector<HTMLElement>(
+            ".catalog__filters-select-btn-text"
+          );
+
+          let open = false;
+          const openSelect = () => {
+            select.classList.add("open");
+            open = true;
+          };
+          const closeSelect = () => {
+            select.classList.remove("open");
+            open = false;
+          };
+
+          const inputs = Array.from(
+            select.querySelectorAll<HTMLInputElement>('input[type="radio"]')
+          );
+
+          const setPlaceholderValue = () => {
+            select.classList.add("placeholder-shown");
+            const placeholderItem = inputs.find(
+              (input) => input.value?.trim() === ""
+            );
+            if (!placeholderItem) return;
+            const itemTextElement = placeholderItem.nextElementSibling;
+            if (!itemTextElement) return;
+
+            btnText.textContent = itemTextElement.textContent;
+          };
+
+          const setSelected = () => {
+            select.classList.remove("placeholder-shown");
+            const selected = inputs.find((input) => input.checked);
+            if (!selected || selected.value.trim() === "") {
+              setPlaceholderValue();
+            } else {
+              const itemTextElement = selected.nextElementSibling;
+              if (!itemTextElement) return;
+              btnText.textContent = itemTextElement.textContent;
+            }
+            closeSelect();
+            checkForm();
+          };
+
+          const buttonHandler = (event: MouseEvent) => {
+            event.preventDefault();
+            if (!open) {
+              openSelect();
+            } else {
+              closeSelect();
+            }
+          };
+
+          btn.addEventListener("click", buttonHandler);
+
+          inputs.forEach((input) => {
+            input.addEventListener("change", setSelected);
+          });
+
+          const outsideClickHandler = (event: MouseEvent) => {
+            const target = event.target as HTMLElement;
+
+            if (select.contains(target)) return;
+            closeSelect();
+          };
+
+          document.addEventListener("click", outsideClickHandler);
+
+          const formResetHandler = () => {
+            inputs.forEach((input) => (input.checked = false));
+            setSelected();
+            closeSelect();
+            checkForm();
+          };
+
+          form.addEventListener("reset", formResetHandler);
+
+          const selected = inputs.find((input) => input.checked);
+          if (!selected) {
+            const empty = inputs.find((input) => input.value.trim() === "");
+            if (empty) {
+              empty.checked = true;
+            }
+          }
+          setSelected();
+
+          selectsInstances.push({
+            inputs,
+            setSelected,
+            form,
+            formResetHandler,
+            btn,
+            buttonHandler,
+            outsideClickHandler,
+          });
+        });
+      }
+
+      function destroySelects() {
+        selectsInstances.forEach((instance) => {
+          const {
+            inputs,
+            setSelected,
+            form,
+            formResetHandler,
+            btn,
+            buttonHandler,
+            outsideClickHandler,
+          } = instance;
+
+          inputs.forEach((input) =>
+            input.removeEventListener("change", setSelected)
+          );
+
+          form.removeEventListener("reset", formResetHandler);
+
+          btn.removeEventListener("click", buttonHandler);
+
+          document.removeEventListener("click", outsideClickHandler);
+
+          checkForm();
+        });
+        selectsInstances = [];
+      }
+
       initializeSelects();
+
+      const reinitFiltersHandler = () => {
+        destroyAccordions();
+        destroySelects();
+        initAccordions();
+        initializeSelects();
+      };
+
+      document.addEventListener("reinitfilters", reinitFiltersHandler);
+
+      instances.push({
+        reinitFiltersHandler,
+        destroySelects,
+        destroyAccordions,
+        slider,
+        handlePointerDown,
+        handlePointerUp,
+        handleMinusClick,
+        handlePlusClick,
+        handleMouseMove,
+        minus,
+        plus,
+        openFilters,
+        closeFilters,
+        filtersOpenBtn,
+        filtersCloseBtn,
+        mobileSubmit,
+        mobileReset,
+      });
     });
+  }
+
+  function destroy() {
+    document.body.classList.remove("show-four-columns");
+    document.body.classList.remove("show-three-columns");
+    document.body.classList.remove("show-two-columns");
+    document.body.classList.remove("show-one-column");
+    document.body.classList.remove("mobile-show-two-columns");
+    document.body.classList.remove("mobile-show-one-column");
+
+    instances.forEach((instance) => {
+      const {
+        reinitFiltersHandler,
+        destroySelects,
+        destroyAccordions,
+        slider,
+        plus,
+        minus,
+        handlePointerUp,
+        handlePointerDown,
+        handlePlusClick,
+        handleMinusClick,
+        handleMouseMove,
+        filtersOpenBtn,
+        filtersCloseBtn,
+        mobileSubmit,
+        mobileReset,
+        openFilters,
+        closeFilters,
+      } = instance;
+
+      document.removeEventListener("reinitfilters", reinitFiltersHandler);
+
+      destroySelects();
+      destroyAccordions();
+
+      slider.removeEventListener("pointerenter", handlePointerUp);
+      slider.removeEventListener("pointerdown", handlePointerDown);
+      slider.removeEventListener("pointermove", handleMouseMove);
+      slider.removeEventListener("pointerup", handlePointerUp);
+      slider.removeEventListener("pointercancel", handlePointerUp);
+      slider.removeEventListener("pointerleave", handlePointerUp);
+      plus.removeEventListener("click", handlePlusClick);
+      minus.removeEventListener("click", handleMinusClick);
+
+      filtersOpenBtn.removeEventListener("click", openFilters);
+      filtersCloseBtn.removeEventListener("click", closeFilters);
+      mobileSubmit.removeEventListener("click", closeFilters);
+      mobileReset.removeEventListener("click", closeFilters);
+    });
+
+    instances = [];
+  }
+
+  initialize();
+
+  document.addEventListener(PAGE_LEAVE, () => {
+    destroy();
+  });
+
+  document.addEventListener(PAGE_ENTER, (event: CustomEvent) => {
+    initialize(event.detail.container);
   });
 }

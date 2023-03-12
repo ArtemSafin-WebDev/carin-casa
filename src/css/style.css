@@ -4,6 +4,7 @@
 @import "variables.css";
 @import "animations.css";
 @import "layout.css";
+@import "lazyload.css";
 @import "page-header.css";
 @import "page-footer.css";
 @import "validation.css";
@@ -16,3 +17,4 @@
 @import "utils.css";
 @import "catalog.css";
 @import "contacts.css";
+@import "overlay.css";

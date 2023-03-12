@@ -40,6 +40,7 @@ class Video {
   }
 
   public destroy() {
+    this.stopVideo();
     this.video.removeEventListener("canplaythrough", this.handleCanPlay);
     this.mql.removeEventListener("change", this.handleWidthChange);
   }

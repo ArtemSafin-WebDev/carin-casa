@@ -1,31 +1,30 @@
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
+import gsap from "gsap";
 
-gsap.registerPlugin(ScrollTrigger);
-
-function reveal(selector = ".js-reveal-block") {
+export default function contactsIntroAnimation() {
   let instances = [];
-
   function initialize(context = document) {
     if (instances.length) return;
+
     const elements: HTMLElement[] = Array.from(
-      context.querySelectorAll(selector)
+      context.querySelectorAll(".contacts__intro")
     );
 
-    console.log("Creating revealable elements", elements);
     elements.forEach((element) => {
-      const instance = ScrollTrigger.create({
-        trigger: element,
-        start: "top+=30 bottom",
-        end: "bottom top",
-        onEnter: () => {
-          element.classList.add("revealed");
-        },
+      const textContent = element.querySelector(
+        ".contacts__intro-text-content"
+      );
+
+      const tl = gsap.timeline();
+
+      tl.to(textContent, {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.4,
       });
 
-      instances.push(instance);
+      instances.push(tl);
     });
   }
 
@@ -33,8 +32,6 @@ function reveal(selector = ".js-reveal-block") {
     instances.forEach((instance) => instance.kill());
     instances = [];
   }
-
-  initialize();
 
   document.addEventListener(PAGE_LEAVE, () => {
     destroy();
@@ -44,5 +41,3 @@ function reveal(selector = ".js-reveal-block") {
     initialize(event.detail.container);
   });
 }
-
-export default reveal;

@@ -1,0 +1,10 @@
+.lazyImage img {
+  opacity: 1;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.lazyImageError img,
+.lazyImageWaiting img {
+  opacity: 0;
+  transition: none;
+}

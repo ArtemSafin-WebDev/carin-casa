@@ -1,0 +1,46 @@
+.overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  background-color: #fffdf9;
+  pointer-events: none;
+  top: 200%;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 252, 248, 0) 0%,
+      rgba(255, 252, 248, 0.644861) 26.53%,
+      rgba(255, 252, 248, 0.831902) 43.34%,
+      rgba(255, 252, 248, 0.953012) 55.73%,
+      #fffcf8 74.61%
+    );
+    transform: translateY(-100%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      180deg,
+      rgba(255, 252, 248, 0) 0%,
+      rgba(255, 252, 248, 0.644861) 26.53%,
+      rgba(255, 252, 248, 0.831902) 43.34%,
+      rgba(255, 252, 248, 0.953012) 55.73%,
+      #fffcf8 74.61%
+    );
+    transform: scaleY(-1);
+  }
+}
