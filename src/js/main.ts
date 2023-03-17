@@ -23,6 +23,8 @@ import similarProductsSlider from "./similarProductsSlider";
 import productSlider from "./productSlider";
 import anchorLinks from "./anchorScrolling";
 import productNav from "./productNav";
+import materials from "./materials";
+import priceConfig from "./priceConfig";
 
 document.addEventListener("DOMContentLoaded", () => {
   pageTransitions();
@@ -46,6 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
   productSlider();
   anchorLinks();
   productNav();
+  materials();
+  priceConfig();
 });
 
 window.addEventListener("load", () => {

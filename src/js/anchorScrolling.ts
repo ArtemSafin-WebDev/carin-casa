@@ -17,7 +17,7 @@ export default function anchorLinks() {
         scrollTo: {
           y: elementToScroll,
           autoKill: false,
-          offsetY: productNav ? productNav.offsetHeight : offset,
+          offsetY: productNav ? productNav.offsetHeight + offset : offset,
         },
       });
     } else {

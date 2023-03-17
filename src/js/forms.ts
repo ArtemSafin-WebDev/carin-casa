@@ -10,10 +10,11 @@ export default function forms() {
     const elements: HTMLFormElement[] = Array.from(
       context.querySelectorAll(".js-form")
     );
+
     elements.forEach((form) => {
       const validator = new Validator(form);
 
-      const handleSubmit = (event) => {
+      const handleSubmit = (event: MouseEvent) => {
         event.preventDefault();
         validator.validate();
       };
