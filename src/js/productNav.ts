@@ -7,7 +7,10 @@ import { PAGE_LEAVE } from "./constants/pageLeave";
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function productNav() {
-  let instances = [];
+  let instances: Array<{
+    trigger: ScrollTrigger;
+    linksTriggers: ScrollTrigger[];
+  }> = [];
 
   function initialize(context = document) {
     if (instances.length) return;
@@ -29,6 +32,8 @@ export default function productNav() {
         pin: true,
         pinSpacing: false,
       });
+
+      const linksTriggers: ScrollTrigger[] = [];
 
       links.forEach((link) => {
         const url = new URL(link.href);
@@ -63,18 +68,22 @@ export default function productNav() {
             }
           },
         });
+
+        linksTriggers.push(trigger);
       });
 
       instances.push({
         trigger: instance,
+        linksTriggers,
       });
     });
   }
 
   function destroy() {
     instances.forEach((instance) => {
-      const { trigger } = instance;
+      const { trigger, linksTriggers } = instance;
       trigger.kill();
+      linksTriggers.forEach((trigger) => trigger.kill());
     });
     instances = [];
   }
