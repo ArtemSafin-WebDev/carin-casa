@@ -105,6 +105,10 @@ export class MaterialConfigurator {
     this.setFormSelection();
     this.setMaterialSelection();
     this.setMobileCategoriesSliders();
+
+    if (this.partsBtns.length) {
+      this.setPart(0);
+    }
   }
 
   private setPart(index: number) {
@@ -125,7 +129,7 @@ export class MaterialConfigurator {
   }
 
   private setFormSelection() {
-    if (this.formPreview) {
+    if (this.formPreview && this.formCards.length) {
       this.formCards.forEach((card) => {
         const handler = (event: MouseEvent) => {
           event.preventDefault();

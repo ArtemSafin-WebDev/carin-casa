@@ -9,6 +9,7 @@ class Configurator {
 
   private sizesBtns: HTMLButtonElement[];
   private materialsBtns: HTMLButtonElement[];
+  private facadeBtns: HTMLButtonElement[];
   private optionsBtns: HTMLButtonElement[];
   private priceOutput: HTMLElement;
   private projectAboutIntro: HTMLElement;
@@ -33,6 +34,11 @@ class Configurator {
     this.materialsBtns = Array.from(
       element.querySelectorAll<HTMLButtonElement>(
         ".product__about-configurator-checkboxes-block--materials .product__about-configurator-checkbox-btn"
+      )
+    );
+    this.facadeBtns = Array.from(
+      element.querySelectorAll<HTMLButtonElement>(
+        ".product__about-configurator-checkboxes-block--facade .product__about-configurator-checkbox-btn"
       )
     );
     this.optionsBtns = Array.from(
@@ -86,6 +92,7 @@ class Configurator {
     this.pinImage();
     this.setSizeSelect();
     this.setMaterialSelect();
+    this.setFacadeSelect();
 
     this.setOptionsSelect();
 
@@ -129,6 +136,9 @@ class Configurator {
           for (const [priceIndex, price] of prices.entries()) {
             if (price.toLowerCase().trim() === "skip") continue;
             const relatedBtn = this.materialsBtns[priceIndex];
+            if (!relatedBtn) {
+              continue;
+            }
             relatedBtn.setAttribute("data-price", price);
             const text = relatedBtn.querySelector(
               ".product__about-configurator-checkbox-btn-price"
@@ -142,6 +152,7 @@ class Configurator {
           for (const [priceIndex, price] of prices.entries()) {
             if (price.toLowerCase().trim() === "skip") continue;
             const relatedBtn = this.optionsBtns[priceIndex];
+            if (!relatedBtn) continue;
             relatedBtn.setAttribute("data-price", price);
             const text = relatedBtn.querySelector(
               ".product__about-configurator-options-btn-price"
@@ -193,6 +204,30 @@ class Configurator {
     }
   }
 
+  private setFacadeSelect() {
+    this.facadeBtns.forEach((btn) => {
+      const handler = (event: MouseEvent) => {
+        event.preventDefault();
+        this.facadeBtns.forEach((btn) => btn.classList.remove("active"));
+        btn.classList.add("active");
+
+        this.calculatePrice();
+      };
+      btn.addEventListener("click", handler);
+    });
+
+    if (this.facadeBtns.length) {
+      const activeBtn = this.facadeBtns.find((btn) =>
+        btn.classList.contains("active")
+      );
+      if (!activeBtn) {
+        this.facadeBtns[0].click();
+      } else {
+        activeBtn.click();
+      }
+    }
+  }
+
   private setOptionsSelect() {
     this.optionsBtns.forEach((btn) => {
       const handler = (event: MouseEvent) => {
@@ -210,6 +245,7 @@ class Configurator {
     let sizePrice = 0;
     let materialPrice = 0;
     let optionsPrice = 0;
+    let facadePrice = 0;
 
     console.log(this.sizesBtns, this.materialsBtns, this.optionsBtns);
 
@@ -232,6 +268,16 @@ class Configurator {
       }
     }
 
+    if (this.facadeBtns.length) {
+      const activeBtn = this.facadeBtns.find((btn) =>
+        btn.classList.contains("active")
+      );
+      if (activeBtn) {
+        const price = Number(activeBtn.getAttribute("data-price"));
+        facadePrice = price;
+      }
+    }
+
     if (this.optionsBtns.length) {
       const activeBtns = this.optionsBtns.filter((btn) =>
         btn.classList.contains("active")
@@ -244,7 +290,7 @@ class Configurator {
       }
     }
 
-    const total = sizePrice + materialPrice + optionsPrice;
+    const total = sizePrice + materialPrice + optionsPrice + facadePrice;
 
     this.priceOutput.textContent = `${total.toLocaleString()} ₽`;
   }

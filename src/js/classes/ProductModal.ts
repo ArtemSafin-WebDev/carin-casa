@@ -1,5 +1,6 @@
 import { clearAllBodyScrollLocks, disableBodyScroll } from "body-scroll-lock";
 import Validator from "./Validator";
+import axios from "axios";
 
 class ProductModal {
   private closeBtns: HTMLButtonElement[];
@@ -12,6 +13,7 @@ class ProductModal {
   private standardLayer: HTMLElement;
   private successLayer: HTMLElement;
   private errorLayer: HTMLElement;
+  private controller: AbortController;
   constructor(element: HTMLElement, openBtn: HTMLButtonElement) {
     this.modal = element;
     this.closeBtns = Array.from(
@@ -38,6 +40,7 @@ class ProductModal {
     this.openBtn.addEventListener("click", this.handleOpen);
 
     if (this.form) {
+      this.controller = new AbortController();
       this.formValidator = new Validator(this.form);
       this.form.addEventListener("submit", this.handleFormSubmit);
 
@@ -58,28 +61,50 @@ class ProductModal {
     }
   };
 
-  public resetLayers() {
+  public resetLayers = () => {
     this.standardLayer.classList.remove("hidden");
     this.errorLayer.classList.remove("shown");
     this.successLayer.classList.remove("shown");
-  }
+  };
 
-  public showSuccess() {
+  public showSuccess = () => {
     this.standardLayer.classList.add("hidden");
     this.errorLayer.classList.remove("shown");
     this.successLayer.classList.add("shown");
-  }
+  };
 
-  public showError() {
+  public showError = () => {
     this.standardLayer.classList.add("hidden");
     this.errorLayer.classList.add("shown");
     this.successLayer.classList.remove("shown");
-  }
+  };
 
   private handleFormSubmit = (event: SubmitEvent) => {
     console.log("Submitting form inside modal");
     event.preventDefault();
     this.formValidator.validate();
+
+    if (this.formValidator.valid) {
+      const formData = new FormData(this.form);
+
+      axios
+        .post(this.form.action, formData, {
+          signal: this.controller.signal,
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        })
+        .then((res) => {
+          console.log(res.data);
+          if (res.data.status === "mail_sent") {
+            this.form.reset();
+            this.showSuccess();
+          }
+        })
+        .catch(() => {
+          this.showError();
+        });
+    }
   };
 
   private handleClose = (event: MouseEvent) => {
@@ -104,6 +129,8 @@ class ProductModal {
     clearAllBodyScrollLocks();
     this.modal.classList.remove("active");
     this.open = false;
+    this.form.reset();
+    this.resetLayers();
   }
 
   public destroy() {

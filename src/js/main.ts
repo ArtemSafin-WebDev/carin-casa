@@ -9,7 +9,7 @@ import smoothScrolling from "./smoothScrolling";
 import introParallax from "./introParallax";
 import reveal from "./reveal";
 import catalogFilters from "./catalogFilters";
-import forms from "./forms";
+import forms from "./subscriptionForm";
 import videos from "./videos";
 import mapScrolling from "./mapScrolling";
 import pageTransitions from "./pageTransitions";
@@ -25,6 +25,8 @@ import anchorLinks from "./anchorScrolling";
 import productNav from "./productNav";
 import materials from "./materials";
 import priceConfig from "./priceConfig";
+import { PAGE_ENTER } from "./constants/pageEnter";
+import writeUsForm from "./writeUsForm";
 
 document.addEventListener("DOMContentLoaded", () => {
   pageTransitions();
@@ -50,6 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
   productNav();
   materials();
   priceConfig();
+  writeUsForm();
+
+  if (document.body.classList.contains("admin-bar")) {
+    const event = new CustomEvent(PAGE_ENTER, {
+      bubbles: true,
+      detail: {
+        container: document,
+      },
+    });
+    document.dispatchEvent(event);
+  }
 });
 
 window.addEventListener("load", () => {

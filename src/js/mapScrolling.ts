@@ -8,7 +8,10 @@ function mapScrolling() {
     if (!isMobile()) return;
     const mapWrapper = document.querySelector(".contacts__map-wrapper");
     if (!mapWrapper) return;
-    const scrollAmount = mapWrapper.scrollWidth / 2.5;
+    const amount = mapWrapper.hasAttribute("data-scroll-amount")
+      ? Number(mapWrapper.getAttribute("data-scroll-amount"))
+      : 2.5;
+    const scrollAmount = mapWrapper.scrollWidth / amount;
     mapWrapper.scrollLeft = scrollAmount;
   }
 

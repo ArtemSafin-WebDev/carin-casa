@@ -76,7 +76,8 @@
                 <div class="page-footer__subscribe-text">
                     Подпишитесь на бесплатную рассылку послезных материалов и оставайтесь в курсе всех событий
                 </div>
-                <form action="/" method="POST" class="page-footer__subscribe-form js-form">
+                <form action="/wp-json/contact-form-7/v1/contact-forms/97/feedback" method="POST"
+                    class="page-footer__subscribe-form js-subscription-form">
                     <div class="page-footer__subscribe-form-input-wrapper">
                         <input type="email" class="page-footer__subscribe-form-input" name="your-email" required=""
                             placeholder="Email">
@@ -85,6 +86,18 @@
                                 <use xlink:href="#diagonal-arrow"></use>
                             </svg>
                         </button>
+                    </div>
+                    <div class="page-footer__subscribe-form-message page-footer__subscribe-form-message--success">
+                        <svg width="14" height="14" aria-hidden="true">
+                            <use xlink:href="#ok"></use>
+                        </svg>
+                        Вы успешно подписались на рассылку. Спасибо!
+                    </div>
+                    <div class="page-footer__subscribe-form-message page-footer__subscribe-form-message--error">
+                        <svg width="14" height="14" aria-hidden="true">
+                            <use xlink:href="#warning"></use>
+                        </svg>
+                        Не удалось отправить заявку, пожалуйста попробуйте позже.
                     </div>
                 </form>
             </div>
