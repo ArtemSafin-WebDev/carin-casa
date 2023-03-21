@@ -146,6 +146,8 @@ class Configurator {
             text.textContent = `+${new Intl.NumberFormat("ru-RU", {
               style: "currency",
               currency: "RUB",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
             }).format(Number(price))}`;
           }
         }
@@ -163,6 +165,8 @@ class Configurator {
             text.textContent = `+${new Intl.NumberFormat("ru-RU", {
               style: "currency",
               currency: "RUB",
+              minimumFractionDigits: 0,
+              maximumFractionDigits: 0,
             }).format(Number(price))}`;
           }
         }
@@ -301,6 +305,8 @@ class Configurator {
     this.priceOutput.textContent = `${new Intl.NumberFormat("ru-RU", {
       style: "currency",
       currency: "RUB",
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
     }).format(total)}`;
   }
 

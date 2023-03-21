@@ -68,6 +68,10 @@ class Validator {
     ) {
       this.locale = "ru";
     } else {
+      console.log(
+        "Setting en locale",
+        document.documentElement.lang.toLowerCase()
+      );
       this.locale = "en";
     }
     this.textFields = Array.from(
@@ -243,14 +247,14 @@ class Validator {
     return this.errors.length === 0;
   }
 
-  public reset() {
+  public reset = () => {
     this.errors = [];
     this.hasBeenValidated = false;
     this.form
       .querySelectorAll(".validation-error")
       .forEach((message) => message.remove());
     this.updateHeight();
-  }
+  };
 
   public destroy() {
     this.form
