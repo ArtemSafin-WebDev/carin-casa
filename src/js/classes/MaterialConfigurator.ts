@@ -204,6 +204,13 @@ export class MaterialConfigurator {
                 ".product__materials-selected-card-image"
               );
             selectedMaterialCardImage.src = image.src;
+
+            const selectedMaterialCardTitle: HTMLElement =
+              selectedMaterialCard.querySelector(
+                ".product__materials-selected-card-title"
+              );
+
+            selectedMaterialCardTitle.textContent = name.textContent;
           }
 
           const input = this.matInputs[itemIndex];
