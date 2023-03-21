@@ -20,7 +20,7 @@ export class MaterialConfigurator {
   private formsSliderInstance: Swiper | null;
   private formCards: HTMLElement[];
   private formPreview: HTMLElement | null;
-  private mainMaterialIllustration: HTMLImageElement;
+  private mainMaterialIllustration: HTMLImageElement | null;
   private selectedMaterialsCards: HTMLElement[];
   private matInputs: HTMLInputElement[];
   private materialModalOpenBtn: HTMLButtonElement;
@@ -192,7 +192,9 @@ export class MaterialConfigurator {
           );
           const name = card.querySelector(".product__materials-card-title");
           if (itemIndex === 0) {
-            this.mainMaterialIllustration.src = image.src;
+            if (this.mainMaterialIllustration && image) {
+              this.mainMaterialIllustration.src = image.src;
+            }
           }
 
           const selectedMaterialCard = this.selectedMaterialsCards[itemIndex];

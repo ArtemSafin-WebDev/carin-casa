@@ -143,7 +143,10 @@ class Configurator {
             const text = relatedBtn.querySelector(
               ".product__about-configurator-checkbox-btn-price"
             );
-            text.textContent = `+${Number(price).toLocaleString()} ₽`;
+            text.textContent = `+${new Intl.NumberFormat("ru-RU", {
+              style: "currency",
+              currency: "RUB",
+            }).format(Number(price))}`;
           }
         }
 
@@ -157,7 +160,10 @@ class Configurator {
             const text = relatedBtn.querySelector(
               ".product__about-configurator-options-btn-price"
             );
-            text.textContent = `+${Number(price).toLocaleString()} ₽`;
+            text.textContent = `+${new Intl.NumberFormat("ru-RU", {
+              style: "currency",
+              currency: "RUB",
+            }).format(Number(price))}`;
           }
         }
 
@@ -292,7 +298,10 @@ class Configurator {
 
     const total = sizePrice + materialPrice + optionsPrice + facadePrice;
 
-    this.priceOutput.textContent = `${total.toLocaleString()} ₽`;
+    this.priceOutput.textContent = `${new Intl.NumberFormat("ru-RU", {
+      style: "currency",
+      currency: "RUB",
+    }).format(total)}`;
   }
 
   public destroy() {
