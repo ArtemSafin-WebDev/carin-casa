@@ -64,7 +64,8 @@ class Validator {
     this.localization = localization;
     if (
       document.documentElement.lang.toLowerCase() === "ru" ||
-      document.documentElement.lang.toLowerCase() === "ru_ru"
+      document.documentElement.lang.toLowerCase() === "ru_ru" ||
+      document.documentElement.lang.toLowerCase() === "ru-ru"
     ) {
       this.locale = "ru";
     } else {
