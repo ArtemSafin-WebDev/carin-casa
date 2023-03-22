@@ -198,6 +198,8 @@
   width: 1rem;
   height: 1rem;
   align-self: center;
+  box-sizing: content-box;
+  padding-left: 2rem;
   & svg {
     display: block;
     width: 100%;

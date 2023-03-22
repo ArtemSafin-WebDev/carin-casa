@@ -349,7 +349,11 @@ class Configurator {
       }
     }
 
-    const total = sizePrice + materialPrice + optionsPrice + facadePrice;
+    let total = sizePrice + materialPrice + optionsPrice + facadePrice;
+
+    if (this.priceOutput.hasAttribute("data-final-price")) {
+      total = Number(this.priceOutput.getAttribute("data-final-price"));
+    }
 
     let summaryString = "";
 
