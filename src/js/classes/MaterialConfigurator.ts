@@ -22,7 +22,8 @@ export class MaterialConfigurator {
   private formPreview: HTMLElement | null;
   private mainMaterialIllustration: HTMLImageElement | null;
   private selectedMaterialsCards: HTMLElement[];
-  private matInputs: HTMLInputElement[];
+  private materialModalSummaryInput: HTMLInputElement | null;
+  private modelModalSummaryInput: HTMLInputElement | null;
   private materialModalOpenBtn: HTMLButtonElement;
   private materialModal: HTMLElement;
   private materialModalInstance: ProductModal | null;
@@ -32,7 +33,9 @@ export class MaterialConfigurator {
   private categorySliders: HTMLElement[];
   private categorySlidersInstances: Array<Swiper | null> = [];
   private mql: MediaQueryList;
+  private productTitle: string;
   constructor(element: HTMLElement) {
+    this.productTitle = element.getAttribute("data-product-title");
     this.partsBtns = Array.from(
       element.querySelectorAll(".product__materials-choose-part-btn")
     );
@@ -64,10 +67,6 @@ export class MaterialConfigurator {
       element.querySelectorAll(".product__materials-selected-card")
     );
 
-    this.matInputs = Array.from(
-      document.querySelectorAll(".product-modal__mat-input")
-    );
-
     this.categorySliders = Array.from(
       element.querySelectorAll(".product__materials-category-slider")
     );
@@ -85,6 +84,10 @@ export class MaterialConfigurator {
         this.materialModal,
         this.materialModalOpenBtn
       );
+
+      this.materialModalSummaryInput = this.materialModal.querySelector(
+        ".product-modal__summary-input"
+      );
     }
 
     this.modelModal = document.querySelector(".js-model-modal");
@@ -97,6 +100,10 @@ export class MaterialConfigurator {
       this.modelModalInstance = new ProductModal(
         this.modelModal,
         this.modelModalOpenBtn
+      );
+
+      this.modelModalSummaryInput = this.modelModal.querySelector(
+        ".product-modal__summary-input"
       );
     }
 
@@ -138,6 +145,8 @@ export class MaterialConfigurator {
           const mask = card.getAttribute("data-mask");
           console.log(mask);
           this.formPreview.style.setProperty("--mask-image", `url(${mask})`);
+
+          this.setSummary();
         };
         card.addEventListener("click", handler);
       });
@@ -176,6 +185,47 @@ export class MaterialConfigurator {
     this.categorySlidersInstances = [];
   }
 
+  private setSummary = () => {
+    let summaryString = "";
+
+    if (this.productTitle) {
+      summaryString += `Продукт: ${this.productTitle.trim()}; `;
+    }
+    this.selectedMaterialsCards.forEach((card) => {
+      const type = card.querySelector(".product__materials-selected-card-type");
+      const title = card.querySelector(
+        ".product__materials-selected-card-title"
+      );
+      summaryString += `${type.textContent.trim()}: ${title.textContent.trim()}; `;
+    });
+
+    if (this.formCards) {
+      const activeCard = this.formCards.find((card) =>
+        card.classList.contains("active")
+      );
+
+      if (activeCard) {
+        const image = activeCard.querySelector<HTMLImageElement>(
+          ".product__materials-calc-form-slider-card-image"
+        );
+
+        if (image) {
+          summaryString += `Форма: ${image.src.trim()}`;
+        }
+      }
+    }
+
+    console.log("Итог по материалам", summaryString);
+
+    if (this.modelModalSummaryInput) {
+      this.modelModalSummaryInput.value = summaryString;
+    }
+
+    if (this.materialModalSummaryInput) {
+      this.materialModalSummaryInput.value = summaryString;
+    }
+  };
+
   private setMaterialSelection() {
     this.partsItems.forEach((item, itemIndex) => {
       const cards: HTMLElement[] = Array.from(
@@ -213,10 +263,7 @@ export class MaterialConfigurator {
             selectedMaterialCardTitle.textContent = name.textContent;
           }
 
-          const input = this.matInputs[itemIndex];
-          if (input && name) {
-            input.value = name.textContent.trim();
-          }
+          this.setSummary();
         };
         card.addEventListener("click", handler);
       });

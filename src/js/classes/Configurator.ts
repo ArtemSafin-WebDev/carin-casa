@@ -20,7 +20,11 @@ class Configurator {
   private modelModalOpenBtn: HTMLButtonElement;
   private modelModalInstance: ProductModal | null;
   private mm: gsap.MatchMedia;
+  private productTitle: string;
+  private materialModalSummaryInput: HTMLInputElement | null;
+  private modelModalSummaryInput: HTMLInputElement | null;
   constructor(element: HTMLElement) {
+    this.productTitle = element.getAttribute("data-product-title");
     this.imageWrapper = element.querySelector(
       ".product__about-sticky-image-wrapper"
     );
@@ -66,6 +70,10 @@ class Configurator {
         this.materialModal,
         this.materialModalOpenBtn
       );
+
+      this.materialModalSummaryInput = this.materialModal.querySelector(
+        ".product-modal__summary-input"
+      );
     }
 
     this.modelModal = document.querySelector(".js-model-modal-2");
@@ -78,6 +86,10 @@ class Configurator {
       this.modelModalInstance = new ProductModal(
         this.modelModal,
         this.modelModalOpenBtn
+      );
+
+      this.modelModalSummaryInput = this.modelModal.querySelector(
+        ".product-modal__summary-input"
       );
     }
 
@@ -257,6 +269,11 @@ class Configurator {
     let optionsPrice = 0;
     let facadePrice = 0;
 
+    let sizeText = "";
+    let materialText = "";
+    let facadeText = "";
+    let optionsText = "";
+
     console.log(this.sizesBtns, this.materialsBtns, this.optionsBtns);
 
     if (this.sizesBtns.length) {
@@ -266,6 +283,13 @@ class Configurator {
       if (activeBtn) {
         const price = Number(activeBtn.getAttribute("data-price"));
         sizePrice = price;
+
+        const title = activeBtn.querySelector(
+          ".product__about-configurator-checkbox-btn-title"
+        );
+        if (title) {
+          sizeText = title.textContent;
+        }
       }
     }
     if (this.materialsBtns.length) {
@@ -275,6 +299,13 @@ class Configurator {
       if (activeBtn) {
         const price = Number(activeBtn.getAttribute("data-price"));
         materialPrice = price;
+
+        const title = activeBtn.querySelector(
+          ".product__about-configurator-checkbox-btn-title"
+        );
+        if (title) {
+          materialText = title.textContent;
+        }
       }
     }
 
@@ -285,6 +316,13 @@ class Configurator {
       if (activeBtn) {
         const price = Number(activeBtn.getAttribute("data-price"));
         facadePrice = price;
+
+        const title = activeBtn.querySelector(
+          ".product__about-configurator-checkbox-btn-title"
+        );
+        if (title) {
+          facadeText = title.textContent;
+        }
       }
     }
 
@@ -296,11 +334,54 @@ class Configurator {
         activeBtns.forEach((activeBtn) => {
           const price = Number(activeBtn.getAttribute("data-price"));
           optionsPrice += price;
+
+          const title = activeBtn.querySelector(
+            ".product__about-configurator-options-btn-text"
+          );
+
+          if (title) {
+            if (optionsText.trim()) {
+              optionsText += ", ";
+            }
+            optionsText += `${title.textContent.trim().toLowerCase()}`;
+          }
         });
       }
     }
 
     const total = sizePrice + materialPrice + optionsPrice + facadePrice;
+
+    let summaryString = "";
+
+    if (this.productTitle) {
+      summaryString += `Продукт: ${this.productTitle.trim()}; `;
+    }
+    if (sizeText) {
+      summaryString += `Размер: ${sizeText.trim()}; `;
+    }
+    if (materialText) {
+      summaryString += `Материал: ${materialText.trim()}; `;
+    }
+
+    if (facadeText) {
+      summaryString += `Материал фасада: ${facadeText.trim()}; `;
+    }
+
+    if (optionsText) {
+      summaryString += `Дополнительные опции: ${optionsText.trim()}`;
+    }
+
+    summaryString += `; Итоговая цена: ${total}`;
+
+    if (this.modelModalSummaryInput) {
+      this.modelModalSummaryInput.value = summaryString;
+    }
+
+    if (this.materialModalSummaryInput) {
+      this.materialModalSummaryInput.value = summaryString;
+    }
+
+    console.log("Итог расчета:", summaryString);
 
     this.priceOutput.textContent = `${new Intl.NumberFormat("ru-RU", {
       style: "currency",
