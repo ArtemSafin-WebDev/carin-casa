@@ -372,10 +372,10 @@ class Configurator {
     }
 
     if (optionsText) {
-      summaryString += `Дополнительные опции: ${optionsText.trim()}`;
+      summaryString += `Дополнительные опции: ${optionsText.trim()}; `;
     }
 
-    summaryString += `; Итоговая цена: ${total}`;
+    summaryString += `Итоговая цена: ${total}`;
 
     if (this.modelModalSummaryInput) {
       this.modelModalSummaryInput.value = summaryString;
