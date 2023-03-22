@@ -741,12 +741,6 @@
     display: block;
     padding-bottom: 72.11%;
   }
-
-  @media (--mobile) {
-    &::before {
-      padding-bottom: 182%;
-    }
-  }
 }
 
 .product__large-image-picture {
