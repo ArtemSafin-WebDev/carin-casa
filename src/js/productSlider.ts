@@ -34,12 +34,12 @@ export default function productSlider() {
         creativeEffect: {
           limitProgress: 2,
           prev: {
-            translate: ["-100.5%", 0, 0],
+            translate: ["-100%", 0, 0],
             scale: 0.6,
             origin: "right top",
           },
           next: {
-            translate: ["100.5%", 0, 0],
+            translate: ["100%", 0, 0],
             scale: 0.6,
             origin: "left top",
           },

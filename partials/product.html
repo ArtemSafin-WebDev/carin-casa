@@ -94,6 +94,16 @@
                         Воспользуйтесь конфигуратором чтобы сориентироваться по стоимости изделия
                     </div>
                     <div class="product__about-configurator-form">
+                        <div class="product__about-configurator-specs-block">
+                            <h4 class="product__about-configurator-specs-block-title">
+                                Характеристики
+                            </h4>
+                            <div class="product__about-configurator-specs-block-text">
+                                Габаритные размеры, мм: 500 х 500 х 960 / 1100<br>
+                                Высота посадочного места, мм: 670 /<br>
+                                840Высота подлокотника (от пола), мм: 810 / 960
+                            </div>
+                        </div>
                         <div
                             class="product__about-configurator-checkboxes-block product__about-configurator-checkboxes-block--size">
                             <h4 class="product__about-configurator-checkboxes-block-title">
@@ -267,15 +277,21 @@
             <div class="product__slider js-product-slider">
                 <button class="product__slider-arrow product__slider-arrow--prev">
                     <svg width="14" height="14" aria-hidden="true">
-                        <use xlink:href="#slider-arrow-left"></use>
+                        <use xlink:href="#new-slider-arrow-left"></use>
                     </svg>
                 </button>
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         {{#each detail}}
                             <div class="swiper-slide">
-                                <div class="product__slider-card">
+                                <div class="product__slider-card {{#if srcSecond}}
+                                   product__slider-card--double
+                                {{/if}}">
                                     <img src="{{ src }}" alt="" class="product__slider-card-image">
+
+                                    {{#if srcSecond}}
+                                        <img src="{{ srcSecond }}" alt="" class="product__slider-card-image">
+                                    {{/if}}
                                 </div>
                             </div>
                         {{/each}}
@@ -283,7 +299,7 @@
                 </div>
                 <button class="product__slider-arrow product__slider-arrow--next">
                     <svg width="14" height="14" aria-hidden="true">
-                        <use xlink:href="#slider-arrow-right"></use>
+                        <use xlink:href="#new-slider-arrow-right"></use>
                     </svg>
                 </button>
             </div>
