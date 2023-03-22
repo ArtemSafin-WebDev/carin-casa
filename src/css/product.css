@@ -103,6 +103,13 @@
 
 .product__intro--light .product__intro-breadcrumbs {
   color: rgba(255, 252, 248, 0.6);
+  @media (hover: hover) {
+    & a {
+      &:hover {
+        color: var(--white);
+      }
+    }
+  }
 }
 
 .product__intro-main-heading {
