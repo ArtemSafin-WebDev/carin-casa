@@ -52,11 +52,26 @@ export const overlayIn = (data: ITransitionData | IViewData) => {
 
   const tl = gsap.timeline();
 
+  if (!data.next.container.querySelector(".catalog")) {
+    tl.to(window, {
+      duration: 0,
+      ease: "power2.out",
+      scrollTo: {
+        y: 0,
+        autoKill: false,
+      },
+    });
+  }
+
   return tl
-    .from(data.next.container, {
-      autoAlpha: 0,
-      duration: 0.4,
-    })
+    .from(
+      data.next.container,
+      {
+        autoAlpha: 0,
+        duration: 0.4,
+      },
+      0
+    )
     .fromTo(
       overlay,
       {
