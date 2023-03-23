@@ -9,6 +9,14 @@ function catalogForms() {
       context.querySelectorAll(".catalog__filters-form")
     );
 
+    const categoriesLinks: HTMLLinkElement[] = Array.from(
+      context.querySelectorAll(".catalog__filters-categories-link")
+    );
+
+    const activeLink = categoriesLinks.find((link) =>
+      link.classList.contains("active")
+    );
+
     forms.forEach((form) => {
       const inputs = Array.from(
         form.querySelectorAll<HTMLInputElement>("input")
@@ -21,7 +29,7 @@ function catalogForms() {
         const formData = new FormData(form);
         const queryString = new URLSearchParams(formData as any).toString();
 
-        const url = `${form.action}?${queryString}`;
+        const url = `${activeLink.href}&${queryString}`;
 
         console.log("URL", url);
         const redirectEvent = new CustomEvent("redirect", {

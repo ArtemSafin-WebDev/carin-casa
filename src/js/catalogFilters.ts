@@ -63,10 +63,6 @@ export default function catalogFilters() {
         ".catalog__filters-range"
       );
 
-      const selectsContainer = element.querySelector(
-        ".catalog__filters-selects"
-      );
-
       const form = element.querySelector("form");
 
       const slider = range.querySelector<HTMLElement>(
@@ -453,11 +449,6 @@ export default function catalogFilters() {
             outsideClickHandler,
           });
         });
-
-        gsap.to(selectsContainer, {
-          autoAlpha: 1,
-          duration: 0.4,
-        });
       }
 
       function destroySelects() {
@@ -521,12 +512,12 @@ export default function catalogFilters() {
   }
 
   function destroy() {
-    document.body.classList.remove("show-four-columns");
-    document.body.classList.remove("show-three-columns");
-    document.body.classList.remove("show-two-columns");
-    document.body.classList.remove("show-one-column");
-    document.body.classList.remove("mobile-show-two-columns");
-    document.body.classList.remove("mobile-show-one-column");
+    // document.body.classList.remove("show-four-columns");
+    // document.body.classList.remove("show-three-columns");
+    // document.body.classList.remove("show-two-columns");
+    // document.body.classList.remove("show-one-column");
+    // document.body.classList.remove("mobile-show-two-columns");
+    // document.body.classList.remove("mobile-show-one-column");
 
     instances.forEach((instance) => {
       const {
@@ -548,6 +539,8 @@ export default function catalogFilters() {
         openFilters,
         closeFilters,
       } = instance;
+
+      closeFilters();
 
       document.removeEventListener("reinitfilters", reinitFiltersHandler);
 

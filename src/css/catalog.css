@@ -210,11 +210,14 @@
   text-align: center;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  position: absolute;
-  left: 50%;
-  width: 100%;
-  bottom: 2rem;
-  transform: translateX(-50%);
+
+  @media (--desktop) {
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    bottom: 2rem;
+    transform: translateX(-50%);
+  }
 
   @media (--mobile) {
     font-style: normal;
@@ -224,7 +227,6 @@
     text-align: center;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    bottom: 1rem;
   }
 }
 
@@ -442,7 +444,8 @@
   display: none;
 }
 
-.catalog__filters-categories-radio-text {
+.catalog__filters-categories-radio-text,
+.catalog__filters-categories-link {
   @media (--desktop) {
     font-style: normal;
     font-weight: 400;
@@ -465,7 +468,7 @@
       position: absolute;
       left: 0;
       bottom: 0;
-      height: 1px;
+      height: 0.1rem;
       width: 100%;
       transform-origin: left center;
       transform: scaleX(0);
@@ -503,6 +506,24 @@
   }
   .catalog__filters-categories-radio-input:not(:checked)
     ~ .catalog__filters-categories-radio-text {
+    @media (hover: hover) {
+      &:hover {
+        color: var(--text-color);
+        &::after {
+          transform: scaleX(1);
+        }
+      }
+    }
+  }
+
+  .catalog__filters-categories-link.active {
+    color: var(--text-color);
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+
+  .catalog__filters-categories-link:not(.active) {
     @media (hover: hover) {
       &:hover {
         color: var(--text-color);
@@ -553,7 +574,7 @@
 .catalog__filters-range-btn--minus {
   display: inline-grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-gap: 2px;
+  grid-gap: 0.2rem;
 
   & > span {
     border: 1px solid var(--text-color);
@@ -620,8 +641,6 @@
     display: flex;
     align-items: center;
     gap: 3.2rem;
-    opacity: 0;
-    visibility: hidden;
   }
 
   @media (--mobile) {
@@ -887,4 +906,6 @@
   font-size: 3rem;
   line-height: 1.2;
   font-weight: 300;
+  margin-top: 2rem;
+  text-transform: uppercase;
 }
