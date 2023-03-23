@@ -175,7 +175,7 @@
   padding-top: 1.6rem;
   text-align: center;
   gap: 2.4rem;
-
+  position: relative;
   @media (--mobile) {
     gap: 1.6rem;
     padding: 0.6rem;
@@ -210,6 +210,11 @@
   text-align: center;
   letter-spacing: 0.25em;
   text-transform: uppercase;
+  position: absolute;
+  left: 50%;
+  width: 100%;
+  bottom: 2rem;
+  transform: translateX(-50%);
 
   @media (--mobile) {
     font-style: normal;
@@ -219,6 +224,7 @@
     text-align: center;
     letter-spacing: 0.25em;
     text-transform: uppercase;
+    bottom: 1rem;
   }
 }
 
@@ -614,6 +620,8 @@
     display: flex;
     align-items: center;
     gap: 3.2rem;
+    opacity: 0;
+    visibility: hidden;
   }
 
   @media (--mobile) {
@@ -872,4 +880,11 @@
     height: 1rem;
     fill: currentColor;
   }
+}
+
+.catalog__results-not-found {
+  text-align: center;
+  font-size: 3rem;
+  line-height: 1.2;
+  font-weight: 300;
 }

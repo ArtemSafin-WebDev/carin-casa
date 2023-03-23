@@ -63,6 +63,10 @@ export default function catalogFilters() {
         ".catalog__filters-range"
       );
 
+      const selectsContainer = element.querySelector(
+        ".catalog__filters-selects"
+      );
+
       const form = element.querySelector("form");
 
       const slider = range.querySelector<HTMLElement>(
@@ -74,6 +78,13 @@ export default function catalogFilters() {
 
       let showOnDesktop = 1;
       let showOnMobile = 1;
+
+      if (window.localStorage.getItem("showOnDesktop")) {
+        showOnDesktop = Number(window.localStorage.getItem("showOnDesktop"));
+      }
+      if (window.localStorage.getItem("showOnMobile")) {
+        showOnMobile = Number(window.localStorage.getItem("showOnMobile"));
+      }
 
       const setDesktopProgress = (amount: number) => {
         let state = null;
@@ -90,18 +101,26 @@ export default function catalogFilters() {
           slider.style.setProperty("--desktop-progress", "0");
           showOnDesktop = 1;
           document.body.classList.add("show-four-columns");
+
+          window.localStorage.setItem("showOnDesktop", "1");
         } else if (amount === 2) {
           slider.style.setProperty("--desktop-progress", "0.33");
           showOnDesktop = 2;
           document.body.classList.add("show-three-columns");
+
+          window.localStorage.setItem("showOnDesktop", "2");
         } else if (amount === 3) {
           slider.style.setProperty("--desktop-progress", "0.66");
           showOnDesktop = 3;
           document.body.classList.add("show-two-columns");
+
+          window.localStorage.setItem("showOnDesktop", "3");
         } else if (amount === 4) {
           slider.style.setProperty("--desktop-progress", "1");
           showOnDesktop = 4;
           document.body.classList.add("show-one-column");
+
+          window.localStorage.setItem("showOnDesktop", "4");
         }
 
         if (!isMobile()) {
@@ -125,10 +144,14 @@ export default function catalogFilters() {
           slider.style.setProperty("--mobile-progress", "0");
           document.body.classList.add("mobile-show-two-columns");
           showOnMobile = 1;
+
+          window.localStorage.setItem("showOnMobile", "1");
         } else if (amount === 2) {
           slider.style.setProperty("--mobile-progress", "1");
           document.body.classList.add("mobile-show-one-column");
           showOnMobile = 2;
+
+          window.localStorage.setItem("showOnMobile", "2");
         }
 
         if (isMobile()) {
@@ -229,7 +252,7 @@ export default function catalogFilters() {
           const key = pair[0] as string;
           const value = pair[1] as string;
 
-          if (key === "category") continue;
+          if (key === "product-category") continue;
           if (value.trim() !== "") {
             entries.push({
               [key]: value,
@@ -429,6 +452,11 @@ export default function catalogFilters() {
             buttonHandler,
             outsideClickHandler,
           });
+        });
+
+        gsap.to(selectsContainer, {
+          autoAlpha: 1,
+          duration: 0.4,
         });
       }
 

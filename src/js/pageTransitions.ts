@@ -76,4 +76,11 @@ export default function pageTransitions() {
 
     document.dispatchEvent(event);
   });
+
+  document.addEventListener("redirect", (event: CustomEvent) => {
+    const href = event.detail.href;
+    if (href) {
+      barba.go(href);
+    }
+  });
 }

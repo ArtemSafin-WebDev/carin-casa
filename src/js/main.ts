@@ -27,6 +27,7 @@ import materials from "./materials";
 import priceConfig from "./priceConfig";
 import { PAGE_ENTER } from "./constants/pageEnter";
 import writeUsForm from "./writeUsForm";
+import catalogForms from "./catalogForms";
 
 document.addEventListener("DOMContentLoaded", () => {
   pageTransitions();
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   materials();
   priceConfig();
   writeUsForm();
+  catalogForms();
 
   if (document.body.classList.contains("admin-bar")) {
     const event = new CustomEvent(PAGE_ENTER, {
@@ -62,6 +64,13 @@ document.addEventListener("DOMContentLoaded", () => {
       },
     });
     document.dispatchEvent(event);
+
+    document.addEventListener("redirect", (event: CustomEvent) => {
+      const href = event.detail.href;
+      if (href) {
+        window.location.href = href;
+      }
+    });
   }
 });
 
