@@ -65,6 +65,10 @@ export default function catalogFilters() {
 
       const form = element.querySelector("form");
 
+      const checkboxes: HTMLInputElement[] = Array.from(
+        element.querySelectorAll(".catalog__filters-checkbox-input")
+      );
+
       const slider = range.querySelector<HTMLElement>(
         ".catalog__filters-range-slider"
       );
@@ -423,6 +427,7 @@ export default function catalogFilters() {
 
           const formResetHandler = () => {
             inputs.forEach((input) => (input.checked = false));
+            checkboxes.forEach((box) => (box.checked = false));
             setSelected();
             closeSelect();
             checkForm();
