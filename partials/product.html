@@ -1,7 +1,9 @@
 <section class="product">
     <div class="product__intro">
         <div class="product__intro-bg">
-            <img src="/images/product-intro.webp" alt="" class="product__intro-bg-image">
+            <div class="product__intro-bg-parallax">
+                <img src="/images/product-intro.webp" alt="" class="product__intro-bg-image">
+            </div>
         </div>
         <div class="product__intro-content">
             <div class="product__intro-breadcrumbs">
@@ -57,13 +59,16 @@
             </ul>
         </div>
     </div>
-    <div class="product__about js-price-configurator" data-product-title="Pierre">
+    <div class="product__about js-price-configurator js-reveal-block" data-product-title="Pierre">
         <div class="product__about-intro">
             <div class="product__about-intro-content">
+                <div class="product__about-section-mark">
+                    <div class="product__about-section-mark-inner" id="about"></div>
+                </div>
                 <div class="product__about-text-content-wrapper">
 
 
-                    <h2 class="product__about-heading" id="about">
+                    <h2 class="product__about-heading">
                         Стол LORAN с лаконичным современным дизайном и солидными пропорциями выступает центральной
                         скульптурой вашего дома
                     </h2>
@@ -287,10 +292,11 @@
                                 <div class="product__slider-card {{#if srcSecond}}
                                    product__slider-card--double
                                 {{/if}}">
-                                    <img src="{{ src }}" alt="" class="product__slider-card-image">
+                                    <img data-src="{{ src }}" alt="" class="product__slider-card-image lazyload">
 
                                     {{#if srcSecond}}
-                                        <img src="{{ srcSecond }}" alt="" class="product__slider-card-image">
+                                        <img data-src="{{ srcSecond }}" alt=""
+                                            class="product__slider-card-image lazyload">
                                     {{/if}}
                                 </div>
                             </div>
@@ -305,7 +311,7 @@
             </div>
         </div>
     </div>
-    <div class="product__materials js-material-configurator" id="materials" data-product-title="Pierre">
+    <div class="product__materials js-material-configurator js-reveal-block" id="materials" data-product-title="Pierre">
         <div class="product__materials-inner">
             <h2 class="product__materials-heading">
                 Материалы
@@ -1066,7 +1072,9 @@
     </div>
     <div class="product__large-image">
         <div class="product__large-image-wrapper">
-            <img src="/images/product-large-image.webp" alt="" class="product__large-image-picture">
+            <div class="product__large-image-parallax" data-speed="auto">
+                <img src="/images/product-large-image.webp" alt="" class="product__large-image-picture">
+            </div>
         </div>
     </div>
     <div class="product__has-questions">
@@ -1127,8 +1135,6 @@
     </div>
     <div class="product__similar-products" id="similar">
         <div class="product__similar-products-inner">
-
-
             <div class="product__similar-products-top-row">
                 <h2 class="product__similar-products-heading">
                     Похожие модели

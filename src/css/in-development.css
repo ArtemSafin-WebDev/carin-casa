@@ -1,0 +1,147 @@
+.in-development {
+  padding-top: 21rem;
+  margin-bottom: 15rem;
+
+  @media (--mobile) {
+    padding-top: 9.4rem;
+    margin-bottom: 5rem;
+  }
+}
+
+.in-development__intro {
+  margin-bottom: 10rem;
+  display: grid;
+  grid-template-columns:
+    [main-start] 1fr [side-start] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [content-start] minmax(0, var(--container-width, 0)) [content-end] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [side-end] 1fr [main-end];
+  grid-gap: var(--content-padding, 0);
+
+  @media (--mobile) {
+    margin-bottom: 4rem;
+  }
+}
+
+.in-development__intro-content {
+  grid-column-start: content-start;
+  grid-column-end: content-end;
+  display: flex;
+  flex-direction: column;
+  gap: 4.5rem;
+
+  @media (--mobile) {
+    gap: 2.4rem;
+  }
+}
+
+.in-development__heading {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 7.2rem;
+  line-height: 110%;
+  text-transform: uppercase;
+  max-width: 82rem;
+
+  @media (--mobile) {
+    max-width: none;
+    font-style: normal;
+    font-weight: 200;
+    font-size: 3rem;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+}
+
+.in-development__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2.2rem 6.8rem;
+  background: #232323;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #fffcf8;
+  transition: color 0.2s, background-color 0.2s;
+  align-self: flex-start;
+
+  &:link,
+  &:visited {
+    color: #fffcf8;
+  }
+  @media (hover: hover) {
+    &:hover {
+      background: #393938;
+    }
+  }
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    padding: 2.2rem 4.4rem;
+    align-self: stretch;
+    line-height: 100%;
+  }
+}
+
+.in-development__image-block {
+  display: grid;
+  grid-template-columns:
+    [main-start] 1fr [side-start] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [content-start] minmax(0, var(--container-width, 0)) [content-end] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [side-end] 1fr [main-end];
+  grid-gap: var(--content-padding, 0);
+}
+
+.in-development__image-wrapper {
+  grid-column-start: side-start;
+  grid-column-end: side-end;
+  overflow: hidden;
+  position: relative;
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 33%;
+  }
+
+  @media (--mobile) {
+    &::before {
+      padding-bottom: 100%;
+    }
+  }
+}
+
+.in-development__image-parallax {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 120%;
+
+  @media (--mobile) {
+    height: 100%;
+  }
+}
+
+.in-development__image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

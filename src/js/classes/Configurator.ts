@@ -115,7 +115,7 @@ class Configurator {
     this.mm.add("(min-width: 641px)", () => {
       ScrollTrigger.create({
         trigger: this.imageWrapper,
-        start: "top top",
+        start: "center center",
         markers: false,
         pin: true,
         pinSpacing: false,

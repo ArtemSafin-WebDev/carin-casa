@@ -85,7 +85,7 @@ body:not(.menu-open) .page-header--dark {
     visibility: hidden;
   }
 
-  .loaded .page-header {
+  .page-header.show {
     animation-name: fade-in;
     animation-duration: 0.8s;
     animation-fill-mode: forwards;

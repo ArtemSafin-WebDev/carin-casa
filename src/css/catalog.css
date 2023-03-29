@@ -27,7 +27,7 @@
   grid-column: 1 / -1;
   grid-row: 1 / 2;
   position: relative;
-
+  overflow: hidden;
   &::after {
     content: "";
     inset: 0;
@@ -39,6 +39,11 @@
       ),
       linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0) 23.6%);
   }
+}
+
+.catalog__header-bg-parallax {
+  position: absolute;
+  inset: 0;
 }
 
 .catalog__header-bg-image {
@@ -68,10 +73,19 @@
   }
 }
 
-.catalog__text-content {
-  transform: translateY(5rem);
-  opacity: 0;
-  visibility: hidden;
+@media (--desktop) {
+  .catalog__text-content {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(5rem);
+  }
+
+  .catalog__text-content.show {
+    animation-name: fade-in-up;
+    animation-duration: 0.4s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+  }
 }
 
 .catalog__small-text {
@@ -657,7 +671,69 @@
   position: relative;
 
   @media (--desktop) {
-    width: 28rem;
+    width: 24rem;
+  }
+}
+
+.catalog__filters-checkboxes {
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+
+  @media (--mobile) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2rem;
+    /* display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr)); */
+    margin-top: 2rem;
+  }
+}
+
+.catalog__filters-checkbox {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.catalog__filters-checkbox-input {
+  display: none;
+}
+
+.catalog__filters-checkbox-mark {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #232323;
+  border-radius: 0.2rem;
+  transition: border-color 0.2s, background-color 0.2s;
+  width: 2rem;
+  height: 2rem;
+  & svg {
+    width: 1.4rem;
+    height: 1.4rem;
+    fill: white;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+}
+
+.catalog__filters-checkbox-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 135%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.catalog__filters-checkbox-input:checked ~ .catalog__filters-checkbox-mark {
+  background-color: #232323;
+  & svg {
+    opacity: 1;
   }
 }
 

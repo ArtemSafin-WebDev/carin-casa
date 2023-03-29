@@ -38,7 +38,7 @@ export const overlayOut = (data: ITransitionData | IViewData) => {
       },
       {
         top: "0%",
-        duration: 0.8,
+        duration: 0.4,
       }
     )
     .to(data.current.container, {
@@ -68,7 +68,7 @@ export const overlayIn = (data: ITransitionData | IViewData) => {
       data.next.container,
       {
         autoAlpha: 0,
-        duration: 0.4,
+        duration: 0.2,
       },
       0
     )
@@ -79,7 +79,7 @@ export const overlayIn = (data: ITransitionData | IViewData) => {
       },
       {
         top: "-200%",
-        duration: 0.8,
+        duration: 0.4,
       }
     );
 };

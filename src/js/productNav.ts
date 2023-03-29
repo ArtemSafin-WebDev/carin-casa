@@ -48,6 +48,7 @@ export default function productNav() {
           end: () => `+=${correspondingElement.offsetHeight}`,
           onToggle: (self) => {
             if (self.isActive) {
+              links.forEach((link) => link.classList.remove("active"));
               link.classList.add("active");
 
               gsap.to(productNavList, {

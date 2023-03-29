@@ -1,4 +1,5 @@
 import "virtual:svg-icons-register";
+import "./lazyload";
 
 import hoverCards from "./hoverCards";
 import detailSlider from "./detailSlider";
@@ -13,11 +14,7 @@ import forms from "./subscriptionForm";
 import videos from "./videos";
 import mapScrolling from "./mapScrolling";
 import pageTransitions from "./pageTransitions";
-
-import "../css/style.css";
 import contactsParallax from "./contactsParallax";
-import contactsIntroAnimation from "./contactsIntroAnimation";
-import catalogIntroAnimation from "./catalogIntroAnimation";
 import introMobileSlider from "./introMobileSlider";
 import similarProductsSlider from "./similarProductsSlider";
 import productSlider from "./productSlider";
@@ -28,6 +25,11 @@ import priceConfig from "./priceConfig";
 import { PAGE_ENTER } from "./constants/pageEnter";
 import writeUsForm from "./writeUsForm";
 import catalogForms from "./catalogForms";
+import introAnimations from "./introAnimations";
+
+import "../css/style.css";
+import productIntroParallax from "./productIntroParallax";
+import catalogParallax from "./catalogParallax";
 
 document.addEventListener("DOMContentLoaded", () => {
   pageTransitions();
@@ -44,8 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
   forms();
   videos();
   mapScrolling();
-  contactsIntroAnimation();
-  catalogIntroAnimation();
+
   introMobileSlider();
   similarProductsSlider();
   productSlider();
@@ -55,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
   priceConfig();
   writeUsForm();
   catalogForms();
+  introAnimations();
+  productIntroParallax();
+  catalogParallax();
 
   if (document.body.classList.contains("admin-bar")) {
     const event = new CustomEvent(PAGE_ENTER, {

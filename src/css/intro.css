@@ -110,9 +110,9 @@
     visibility: hidden;
   }
 
-  .loaded .intro__desktop-categories {
+  .intro__desktop-categories.show {
     animation-name: fade-in;
-    animation-duration: 0.8s;
+    animation-duration: 0.4s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
   }
@@ -178,9 +178,9 @@
     transform: translateY(5rem);
   }
 
-  .loaded .intro__content-slider {
+  .intro__content-slider.show {
     animation-name: fade-in-up;
-    animation-duration: 0.8s;
+    animation-duration: 0.4s;
     animation-fill-mode: forwards;
     animation-timing-function: ease-out;
   }
@@ -210,7 +210,7 @@
   opacity: 1;
   visibility: inherit;
   transform: translateY(0);
-  transition: transform 0.4s ease 0.3s, opacity 0.4s ease 0.3s, visibility 0.7s;
+  transition: transform 0.4s ease 0.4s, opacity 0.4s ease 0.4s, visibility 0.8s;
 }
 
 .intro__content-slider-card-title {

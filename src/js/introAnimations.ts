@@ -1,33 +1,21 @@
 import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
-import gsap from "gsap";
 
-export default function catalogIntroAnimation() {
+export default function introAnimations() {
   let instances = [];
+
   function initialize(context = document) {
     if (instances.length) return;
-
     const elements: HTMLElement[] = Array.from(
-      context.querySelectorAll(".catalog__header")
+      context.querySelectorAll(
+        ".page-header, .intro__content-slider, .intro__desktop-categories, .contacts__intro-text-content,.catalog__text-content"
+      )
     );
 
-    elements.forEach((element) => {
-      const textContent = element.querySelector(".catalog__text-content");
-
-      const tl = gsap.timeline();
-
-      tl.to(textContent, {
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.4,
-      });
-
-      instances.push(tl);
-    });
+    elements.forEach((element) => element.classList.add("show"));
   }
 
   function destroy() {
-    instances.forEach((instance) => instance.kill());
     instances = [];
   }
 
