@@ -19,7 +19,7 @@ export default function productIntroParallax() {
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: intro,
-            start: "top top",
+            start: "bottom bottom",
             end: "bottom top",
             scrub: true,
           },
@@ -27,7 +27,8 @@ export default function productIntroParallax() {
 
         tl.to(parallax, {
           duration: 1,
-          y: () => intro.offsetHeight * 0.5,
+          y: () => intro.offsetHeight * 0.3,
+          ease: "none",
         });
       });
 

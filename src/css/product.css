@@ -1438,11 +1438,14 @@
 }
 
 .product__materials-selected {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 2rem;
   align-items: flex-start;
-  gap: 5.6rem;
-  justify-content: center;
+  justify-items: center;
+  margin: 0 auto;
   margin-top: 0;
+  max-width: 25rem;
 
   @media (--mobile) {
     display: none;
@@ -1497,7 +1500,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 0.8rem;
-  line-height: 100%;
+  line-height: 120%;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #a9a7a4;

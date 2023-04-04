@@ -27,11 +27,14 @@ import writeUsForm from "./writeUsForm";
 import catalogForms from "./catalogForms";
 import introAnimations from "./introAnimations";
 
-import "../css/style.css";
 import productIntroParallax from "./productIntroParallax";
 import catalogParallax from "./catalogParallax";
 
+import "../css/style.css";
+import setScrollbarWidth from "./scrollbarWidth";
+
 document.addEventListener("DOMContentLoaded", () => {
+  setScrollbarWidth();
   pageTransitions();
   smoothScrolling();
   hoverCards();

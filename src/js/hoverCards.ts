@@ -39,12 +39,42 @@ export default function hoverCards() {
 
     mm.add("(max-width: 640px)", () => {
       cards.forEach((card) => {
-        ScrollTrigger.create({
-          trigger: card,
-          start: "top center",
-          end: () => `top+=${card.offsetHeight * 1} center`,
-          toggleClass: "hovered",
+        const getContentHeight = () =>
+          parseFloat(
+            getComputedStyle(card).getPropertyValue("--content-height")
+          );
+        const imageContainer: HTMLElement = card.querySelector(
+          ".js-hover-card-image"
+        );
+        if (!imageContainer) return;
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: "center center",
+            end: () => `center+=${card.offsetHeight * 1} center`,
+            toggleActions: "play reverse play reverse",
+          },
         });
+
+        tl.to(imageContainer, {
+          duration: 0.4,
+          "clip-path": () => {
+            const contentHeight = getContentHeight();
+            console.log("Calculation clip path", contentHeight);
+
+            const percentage =
+              ((imageContainer.offsetHeight - contentHeight) /
+                imageContainer.offsetHeight) *
+              100;
+            return `polygon(
+              0 0,
+              100% 0,
+              100% ${percentage}%,
+              0 ${percentage}%`;
+          },
+        });
+
+        console.log("Content height", getContentHeight());
       });
     });
 

@@ -36,31 +36,13 @@ export default function pageTransitions() {
     ],
   });
 
-  barba.hooks.afterOnce((data) => {
-    const event = new CustomEvent(PAGE_ENTER, {
-      bubbles: true,
-      detail: {
-        container: data.next.container,
-      },
-    });
-
-    document.dispatchEvent(event);
-  });
-  barba.hooks.beforeOnce((data) => {
-    const event = new CustomEvent(PAGE_LEAVE, {
-      bubbles: true,
-      detail: {
-        container: data.current.container,
-      },
-    });
-
-    document.dispatchEvent(event);
-  });
   barba.hooks.afterEnter((data) => {
+    console.log("After enter", data);
     const event = new CustomEvent(PAGE_ENTER, {
       bubbles: true,
       detail: {
         container: data.next.container,
+        url: data.next.url,
       },
     });
 

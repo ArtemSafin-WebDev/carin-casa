@@ -43,7 +43,9 @@ function catalogForms() {
 
       inputs.forEach((input) => {
         const handler = () => {
-          handleSubmit();
+          if (window.matchMedia("(min-width: 641px)").matches) {
+            handleSubmit();
+          }
         };
 
         input.addEventListener("change", handler);

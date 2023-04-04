@@ -228,8 +228,9 @@
   }
 
   @media (--mobile) {
-    &.hovered {
+    /* &.hovered {
       & .about__links-card-image-container {
+        transition: clip-path 0.4s;
         clip-path: polygon(
           0 0,
           100% 0,
@@ -237,7 +238,7 @@
           0 calc(100% - var(--content-height, 0))
         );
       }
-    }
+    } */
   }
 }
 
@@ -245,10 +246,14 @@
   grid-column: 1 / 2;
   grid-row: 1 / 2;
   position: relative;
-  transition: clip-path 0.4s;
+
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
   overflow: hidden;
   backface-visibility: hidden;
+
+  @media (--desktop) {
+    transition: clip-path 0.4s;
+  }
 }
 
 .about__links-card-image-parallax {

@@ -119,7 +119,9 @@ class ProductModal {
 
   public openModal() {
     if (this.open) return;
-    disableBodyScroll(this.modal);
+    disableBodyScroll(this.modal, {
+      reserveScrollBarGap: true,
+    });
     this.modal.classList.add("active");
     this.open = true;
   }

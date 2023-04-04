@@ -3,7 +3,7 @@
   position: fixed;
   left: 0;
   top: 0;
-  width: 100%;
+  right: 0;
   height: 100%;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -13,6 +13,10 @@
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s, visibility 0s linear 0.4s;
+
+  &:not(.active) {
+    right: calc(-1 * var(--sb-width, 0));
+  }
 
   &.active {
     opacity: 1;
