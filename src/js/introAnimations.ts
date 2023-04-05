@@ -8,7 +8,7 @@ export default function introAnimations() {
     if (instances.length) return;
     const elements: HTMLElement[] = Array.from(
       context.querySelectorAll(
-        ".page-header, .intro__content-slider, .intro__desktop-categories, .contacts__intro-text-content,.catalog__text-content"
+        ".page-header, .intro__content-slider, .intro__desktop-categories, .contacts__intro-text-content,.catalog__text-content, .standard-header__text-content"
       )
     );
 

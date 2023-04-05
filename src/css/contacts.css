@@ -624,3 +624,23 @@
     bottom: 2.4rem;
   }
 }
+
+.contacts__large-text {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 3.2rem;
+  line-height: 125%;
+
+  @media (--desktop) {
+    grid-column: 1 / 16;
+  }
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 1.8rem;
+    line-height: 125%;
+    grid-column-start: content-start;
+    grid-column-end: content-end;
+  }
+}

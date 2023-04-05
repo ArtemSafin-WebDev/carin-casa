@@ -17,6 +17,16 @@
   }
 }
 
+.detail--small-margin {
+  @media (--desktop) {
+    margin-bottom: 0;
+  }
+
+  @media (--mobile) {
+    margin-bottom: 0;
+  }
+}
+
 .detail__content {
   grid-column-start: content-start;
   grid-column-end: content-end;

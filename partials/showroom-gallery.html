@@ -1,0 +1,32 @@
+<section class="detail detail--small-margin js-reveal-block">
+    <div class="detail__content">
+        <div class="detail__slider js-detail-slider">
+            <button class="detail__slider-arrow detail__slider-arrow--prev">
+                <svg width="14" height="14" aria-hidden="true">
+                    <use xlink:href="#new-slider-arrow-left"></use>
+                </svg>
+            </button>
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {{#each detail}}
+                        <div class="swiper-slide">
+                            <div class="detail__slider-card  {{#if srcSecond}}
+                                   detail__slider-card--double
+                                {{/if}}">
+                                <img src="{{ src }}" alt="" class="detail__slider-card-image">
+                                {{#if srcSecond}}
+                                    <img src="{{ srcSecond }}" alt="" class="detail__slider-card-image">
+                                {{/if}}
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+            <button class="detail__slider-arrow detail__slider-arrow--next">
+                <svg width="14" height="14" aria-hidden="true">
+                    <use xlink:href="#new-slider-arrow-right"></use>
+                </svg>
+            </button>
+        </div>
+    </div>
+</section>

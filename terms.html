@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+    <head>
+        {{> meta }}
+    </head>
+
+    <body>
+        <div data-barba="wrapper">
+            <div data-barba="container" data-barba-namespace="home">
+                <div id="smooth-wrapper">
+                    <div id="smooth-content">
+                        {{> header }}
+                        <main class="page-main">
+                            {{> terms }}
+                            {{> has-questions }}
+
+                        </main>
+                        {{> footer }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{> product-modals }}
+        {{> product-modals-2 }}
+        {{> form-status }}
+        {{> overlay }}
+        {{> loader }}
+        <script type="module" src="/src/js/main.ts"></script>
+    </body>
+
+</html>
