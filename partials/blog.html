@@ -1,0 +1,64 @@
+<section class="blog">
+    <div class="blog__content">
+        <h1 class="blog__heading">
+            Блог
+        </h1>
+        <div class="blog__text">
+            Для блогов характерна возможность публикации отзывов (комментариев) посетителями; она делает блоги средой
+            сетевого общения, имеющей ряд преимуществ перед электронной почтой, группами новостей и чатами.
+        </div>
+        <div class="blog__categories">
+            <ul class="blog__categories-list">
+                <li class="blog__categories-list-item">
+                    <a href="#" class="blog__categories-link active">
+                        Статьи
+                    </a>
+                </li>
+                <li class="blog__categories-list-item">
+                    <a href="#" class="blog__categories-link">
+                        Новости
+                    </a>
+                </li>
+                <li class="blog__categories-list-item">
+                    <a href="#" class="blog__categories-link">
+                        Экспертные статьи
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="blog__results">
+            <ul class="blog__list">
+                {{#each posts}}
+                    <li class="blog__list-item">
+                        <a href="#" class="blog__card">
+                            <div class="blog__card-image-container">
+                                <img src="{{ src }}" alt="" class="blog__card-image">
+                            </div>
+                            <div class="blog__card-content">
+                                <div class="blog__card-info">
+                                    {{#each tags}}
+                                        <div class="blog__card-info-item">
+                                            {{ this }}
+                                        </div>
+                                    {{/each}}
+                                    <div class="blog__card-info-item">
+                                        {{ date }}
+                                    </div>
+                                </div>
+                                <h3 class="blog__card-title">
+                                    {{ title }}
+                                </h3>
+                                <div class="blog__card-text">
+                                    {{ text }}
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
+            <a href="#" class="blog__show-more">
+                Показать еще
+            </a>
+        </div>
+    </div>
+</section>

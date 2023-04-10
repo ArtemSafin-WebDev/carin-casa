@@ -10,6 +10,7 @@ import refund from "./pages-data/refund";
 import guarantee from "./pages-data/guarantee";
 import materialsCategories from "./pages-data/materialsCategories";
 import materials from "./pages-data/materials";
+import blog from "./pages-data/blog";
 
 const pagesConfig = {
   ...home,
@@ -24,6 +25,7 @@ const pagesConfig = {
   ...guarantee,
   ...materialsCategories,
   ...materials,
+  ...blog,
 };
 
 export default pagesConfig;
