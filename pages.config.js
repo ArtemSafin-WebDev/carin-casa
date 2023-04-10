@@ -8,6 +8,8 @@ import payment from "./pages-data/payment";
 import terms from "./pages-data/terms";
 import refund from "./pages-data/refund";
 import guarantee from "./pages-data/guarantee";
+import materialsCategories from "./pages-data/materialsCategories";
+import materials from "./pages-data/materials";
 
 const pagesConfig = {
   ...home,
@@ -20,6 +22,8 @@ const pagesConfig = {
   ...terms,
   ...refund,
   ...guarantee,
+  ...materialsCategories,
+  ...materials,
 };
 
 export default pagesConfig;

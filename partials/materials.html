@@ -1,0 +1,61 @@
+<section class="materials">
+    <div class="materials__content">
+        <div class="materials__breadcrumbs">
+            <a href="#">
+                Главная
+            </a>
+            /
+            <a href="#">
+                Материалы
+            </a>
+        </div>
+        <h1 class="materials__heading">
+            Керамика
+        </h1>
+        <div class="materials__categories">
+            <ul class="materials__categories-list">
+                <li class="materials__categories-list-item">
+                    <a href="#" class="materials__categories-link active">
+                        business
+                    </a>
+                </li>
+                <li class="materials__categories-list-item">
+                    <a href="#" class="materials__categories-link">
+                        premium
+                    </a>
+                </li>
+                <li class="materials__categories-list-item">
+                    <a href="#" class="materials__categories-link">
+                        standart
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div class="materials__results">
+            <div class="materials__results-series">
+                {{#each series}}
+                    <div class="materials__results-series-block">
+                        <h2 class="materials__results-series-block-heading">
+                            {{ title }}
+                        </h2>
+                        <ul class="materials__results-series-list">
+                            {{#each materials}}
+                                <li class="materials__results-series-list-item">
+                                    <a href="#" class="materials__card">
+                                        <div class="materials__card-image-container">
+                                            <img data-src="{{ src }}" alt="" class="materials__card-image lazyload">
+                                        </div>
+                                        <h3 class="materials__card-title">
+                                            {{ title }}
+                                        </h3>
+                                    </a>
+                                </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</section>

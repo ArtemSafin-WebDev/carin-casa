@@ -149,7 +149,8 @@
   line-height: 135%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-
+  position: relative;
+  z-index: 2;
   @media (--mobile) {
     font-style: normal;
     font-weight: 400;
