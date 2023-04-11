@@ -11,6 +11,7 @@ import guarantee from "./pages-data/guarantee";
 import materialsCategories from "./pages-data/materialsCategories";
 import materials from "./pages-data/materials";
 import blog from "./pages-data/blog";
+import faq from "./pages-data/faq";
 
 const pagesConfig = {
   ...home,
@@ -26,6 +27,7 @@ const pagesConfig = {
   ...materialsCategories,
   ...materials,
   ...blog,
+  ...faq,
 };
 
 export default pagesConfig;

@@ -33,6 +33,7 @@ import catalogParallax from "./catalogParallax";
 import "../css/style.css";
 import setScrollbarWidth from "./scrollbarWidth";
 import standardHeaderParallax from "./standardHeaderParallax";
+import accordions from "./accordions";
 
 document.addEventListener("DOMContentLoaded", () => {
   setScrollbarWidth();
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
   productIntroParallax();
   catalogParallax();
   standardHeaderParallax();
+  accordions();
 
   if (document.body.classList.contains("admin-bar")) {
     const event = new CustomEvent(PAGE_ENTER, {
