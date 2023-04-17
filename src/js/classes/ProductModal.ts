@@ -37,7 +37,9 @@ class ProductModal {
       btn.addEventListener("click", this.handleClose);
     });
 
-    this.openBtn.addEventListener("click", this.handleOpen);
+    if (this.openBtn) {
+      this.openBtn.addEventListener("click", this.handleOpen);
+    }
 
     if (this.form) {
       this.controller = new AbortController();
@@ -137,7 +139,10 @@ class ProductModal {
 
   public destroy() {
     this.closeModal();
-    this.openBtn.removeEventListener("click", this.handleOpen);
+    if (this.openBtn) {
+      this.openBtn.removeEventListener("click", this.handleOpen);
+    }
+
     this.closeBtns.forEach((btn) => {
       btn.removeEventListener("click", this.handleClose);
     });

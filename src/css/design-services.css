@@ -1,0 +1,152 @@
+.design-services {
+  display: grid;
+  grid-template-columns:
+    [main-start] 1fr [side-start] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [content-start] minmax(0, var(--container-width, 0)) [content-end] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [side-end] 1fr [main-end];
+  grid-gap: var(--content-padding, 0);
+  margin-bottom: 18rem;
+
+  @media (--mobile) {
+    margin-bottom: 9rem;
+  }
+}
+
+.design-services__content {
+  grid-column-start: content-start;
+  grid-column-end: content-end;
+}
+
+.design-services__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 4.8rem;
+  grid-row-gap: 6.4rem;
+
+  @media (--mobile) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 4.8rem;
+  }
+}
+
+.design-services__list-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.desing-services__card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  @media (--mobile) {
+    text-align: left;
+  }
+}
+
+.desing-services__card-image-container {
+  position: relative;
+  margin-bottom: 5.6rem;
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 56.25%;
+  }
+
+  @media (--mobile) {
+    margin-bottom: 3.2rem;
+    &::before {
+      padding-bottom: 77%;
+    }
+  }
+}
+
+.desing-services__card-image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.desing-services__card-title {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 4rem;
+  line-height: 100%;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2.4rem;
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 2.4rem;
+    line-height: 100%;
+    margin-bottom: 1.6rem;
+    text-align: left;
+  }
+}
+
+.desing-services__card-text {
+  max-width: 53rem;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 4rem;
+
+  @media (--mobile) {
+    margin: 0;
+    max-width: none;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 145%;
+    margin-bottom: 1.6rem;
+  }
+}
+
+.desing-services__card-link {
+  align-self: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.8rem 0;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background-color: currentColor;
+    transition: transform 0.4s;
+    transform: center center;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      &::before {
+        transform: scaleX(0);
+        transition: transform 0.4s ease-out;
+      }
+    }
+  }
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 100%;
+    align-self: flex-start;
+  }
+}

@@ -34,6 +34,8 @@ import "../css/style.css";
 import setScrollbarWidth from "./scrollbarWidth";
 import standardHeaderParallax from "./standardHeaderParallax";
 import accordions from "./accordions";
+import designProjectsSlider from "./designProjectsSlider";
+import designModal from "./designModal";
 
 document.addEventListener("DOMContentLoaded", () => {
   setScrollbarWidth();
@@ -66,6 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
   catalogParallax();
   standardHeaderParallax();
   accordions();
+  designProjectsSlider();
+  designModal();
 
   if (document.body.classList.contains("admin-bar")) {
     const event = new CustomEvent(PAGE_ENTER, {

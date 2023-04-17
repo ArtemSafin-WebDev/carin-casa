@@ -1,0 +1,29 @@
+<section class="design-projects">
+    <div class="design-projects__content">
+        <h2 class="design-projects__heading">
+            Дизайн проекты
+        </h2>
+        <div class="design-projects__slider js-design-projects-slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    {{#each designProjects}}
+                        <div class="swiper-slide">
+                            <div class="design-projects__slider-card">
+                                <div class="design-projects__slider-card-image-container">
+                                    <img data-src="{{ src }}" alt=""
+                                        class="design-projects__slider-card-image lazyload">
+                                </div>
+                                <div class="design-projects__slider-card-text">
+                                    {{ text }}
+                                </div>
+                                <a href="#" class="design-projects__slider-card-author">
+                                    {{ author }}
+                                </a>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

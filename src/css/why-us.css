@@ -1,0 +1,223 @@
+.why-us {
+  display: grid;
+  grid-template-columns:
+    [main-start] 1fr [side-start] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [content-start] minmax(0, var(--container-width, 0)) [content-end] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [side-end] 1fr [main-end];
+  grid-gap: var(--content-padding, 0);
+  margin-bottom: 14rem;
+
+  @media (--mobile) {
+    margin-bottom: 6.4rem;
+    grid-row-gap: 4rem;
+  }
+}
+
+.why-us__content {
+  grid-column-start: content-start;
+  grid-column-end: content-end;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-gap: 4.8rem;
+  align-items: flex-start;
+
+  @media (--mobile) {
+    grid-template-columns: minmax(0, 1fr);
+    grid-gap: 4rem;
+    align-items: stretch;
+    display: contents;
+  }
+}
+
+.why-us__image-wrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &::before {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+  }
+
+  @media (--mobile) {
+    order: -1;
+    grid-column-start: side-start;
+    grid-column-end: side-end;
+    &::before {
+      content: "";
+      display: block;
+      padding-bottom: 73%;
+    }
+  }
+}
+
+.why-us__image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.why-us__text-content {
+  display: flex;
+  flex-direction: column;
+  padding-left: 9.2rem;
+  padding-right: 7rem;
+
+  @media (--mobile) {
+    padding: 0;
+    grid-column-start: content-start;
+    grid-column-end: content-end;
+  }
+}
+
+.why-us__heading {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 7.2rem;
+  line-height: 110%;
+  text-transform: uppercase;
+  margin-bottom: 6rem;
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 3rem;
+    line-height: 120%;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 3rem;
+  }
+}
+
+.why-us__accordions {
+  margin-bottom: 3.2rem;
+
+  @media (--mobile) {
+    margin-bottom: 1.6rem;
+  }
+}
+
+.why-us__accordion {
+  display: flex;
+  flex-direction: column;
+  border-top: 0.3px solid rgba(35, 35, 35, 0.2);
+
+  &:first-child {
+    border: none;
+    & .why-us__accordion-button {
+      padding-top: 0;
+    }
+  }
+}
+
+.why-us__accordion-button {
+  display: flex;
+  align-items: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 3.2rem 0;
+  gap: 2rem;
+  justify-content: space-between;
+  & svg {
+    flex-shrink: 0;
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: currentColor;
+    transition: transform 0.2s;
+  }
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 135%;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    padding: 2.4rem 0;
+  }
+}
+
+.why-us__accordion.active .why-us__accordion-button svg {
+  transform: rotate(180deg);
+}
+
+.why-us__accordion-content {
+  height: 0;
+  overflow: hidden;
+}
+
+.why-us__accordion-content-inner {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 145%;
+  padding-bottom: 3.2rem;
+  & p {
+    margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (--mobile) {
+    padding-bottom: 2.4rem;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 145%;
+
+    & p {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+.why-us__link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 100%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 2.2rem 7.5rem;
+  background: #232323;
+  color: var(--white);
+  transition: background-color 0.2s;
+  text-align: center;
+  justify-content: center;
+  &:link,
+  &:visited {
+    color: var(--white);
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      background: #393938;
+    }
+  }
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 100%;
+    align-self: stretch;
+    width: 100%;
+  }
+}

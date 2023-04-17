@@ -188,7 +188,7 @@
   line-height: 100%;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-
+  text-align: left;
   padding: 3.2rem 0;
   gap: 2rem;
   justify-content: space-between;
@@ -207,7 +207,7 @@
     line-height: 135%;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    padding: 2.4rem;
+    padding: 2.4rem 0;
   }
 }
 

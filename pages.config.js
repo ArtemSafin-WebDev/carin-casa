@@ -12,6 +12,7 @@ import materialsCategories from "./pages-data/materialsCategories";
 import materials from "./pages-data/materials";
 import blog from "./pages-data/blog";
 import faq from "./pages-data/faq";
+import design from "./pages-data/design";
 
 const pagesConfig = {
   ...home,
@@ -28,6 +29,7 @@ const pagesConfig = {
   ...materials,
   ...blog,
   ...faq,
+  ...design,
 };
 
 export default pagesConfig;

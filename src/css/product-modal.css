@@ -53,6 +53,10 @@
     transform: translateX(0%);
     transition: transform 0.4s;
   }
+
+  .product-modal__inner--wide {
+    max-width: 110rem;
+  }
 }
 
 .product-modal__top-row {
@@ -122,6 +126,12 @@
   width: 100%;
 
   @media (--mobile) {
+    max-width: none;
+  }
+}
+
+@media (--desktop) {
+  .product-modal__form-wrapper--wide {
     max-width: none;
   }
 }
