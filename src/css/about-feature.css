@@ -1,0 +1,112 @@
+.about-feature {
+  display: grid;
+  grid-template-columns:
+    [main-start] 1fr [side-start] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [content-start] minmax(0, var(--container-width, 0)) [content-end] calc(
+      var(--side-padding, 0) - var(--content-padding, 0)
+    )
+    [side-end] 1fr [main-end];
+  grid-gap: var(--content-padding, 0);
+  margin-bottom: 12rem;
+  @media (--mobile) {
+    margin-bottom: 5.6rem;
+  }
+}
+
+.about-feature__content {
+  grid-column-start: content-start;
+  grid-column-end: content-end;
+}
+
+.about-feature__heading {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 135%;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 4rem;
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.1rem;
+    margin-bottom: 2.4rem;
+    line-height: 135%;
+  }
+}
+
+.about-feature__row {
+  @media (--desktop) {
+    display: grid;
+    grid-template-columns: repeat(24, minmax(0, 1fr));
+    grid-gap: 0.8rem;
+  }
+
+  @media (--mobile) {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+}
+
+.about-feature__left-col {
+  display: flex;
+  flex-direction: column;
+  @media (--desktop) {
+    grid-column: 1 / 15;
+  }
+}
+
+.about-feature__right-col {
+  display: flex;
+  flex-direction: column;
+  @media (--desktop) {
+    grid-column: 15 / -1;
+  }
+}
+
+.about-feature__large-text {
+  font-style: normal;
+  font-weight: 200;
+  font-size: 3.2rem;
+  line-height: 125%;
+  max-width: 79rem;
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 200;
+    font-size: 1.8rem;
+    line-height: 125%;
+    max-width: none;
+  }
+}
+
+.about-feature__image {
+  width: 28rem;
+  height: auto;
+  margin-bottom: 4.8rem;
+
+  @media (--mobile) {
+    width: 16.2rem;
+    margin-bottom: 3.2rem;
+  }
+}
+
+.about-feature__small-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.5rem;
+  max-width: 52rem;
+  line-height: 145%;
+
+  @media (--mobile) {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.3rem;
+    line-height: 145%;
+    max-width: none;
+  }
+}

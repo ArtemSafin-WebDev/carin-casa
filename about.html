@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+  <head>
+    {{> meta }}
+  </head>
+
+  <body>
+
+    <div data-barba="wrapper">
+      <div data-barba="container" data-barba-namespace="home">
+        <div id="smooth-wrapper">
+          <div id="smooth-content">
+            {{> header }}
+            <main class="page-main">
+              {{> about-header }}
+              {{> about-intro }}
+              {{> about-images-1 }}
+              {{> about-info }}
+              {{> about-partners }}
+              {{> about-images-2 }}
+              {{> about-production }}
+              {{> about-advantages }}
+              {{> about-geography }}
+              {{> about-images-3 }}
+              {{> about-info-2 }}
+              {{> about-images-4 }}
+              {{> about-feature }}
+              {{> about-images-5 }}
+              {{> about-feature-2 }}
+              {{> about-images-6 }}
+            </main>
+            {{> footer }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {{> product-modals }}
+    {{> product-modals-2 }}
+    {{> design-modal }}
+    {{> form-status }}
+    {{> overlay }}
+    {{> loader }}
+    <script type="module" src="/src/js/main.ts"></script>
+  </body>
+
+</html>
