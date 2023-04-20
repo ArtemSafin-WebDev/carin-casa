@@ -77,10 +77,10 @@
   .about-geography.js-reveal-block.revealed {
     & .about-geography__map-image-wrapper {
       animation-name: clip-fade-in;
-      animation-duration: 0.8s;
+      animation-duration: 1.2s;
       animation-fill-mode: forwards;
       animation-delay: 0.2s;
-      animation-timing-function: ease-out;
+      animation-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
     }
     & .about-geography__heading {
       animation-name: fade-in;

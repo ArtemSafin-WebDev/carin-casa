@@ -127,6 +127,9 @@
   .about-images.js-reveal-block {
     & .about-images__image-wrapper {
       clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+      will-change: clip-path;
+      transform: translateZ(0);
+      backface-visibility: hidden;
     }
 
     & .about-images__figcaption {
@@ -138,16 +141,16 @@
   .about-images.js-reveal-block.revealed {
     & .about-images__image-wrapper {
       animation-name: clip-fade-in;
-      animation-duration: 1.5s;
+      animation-duration: 1.2s;
       animation-fill-mode: forwards;
       animation-delay: 0.2s;
-      animation-timing-function: ease-out;
+      animation-timing-function: cubic-bezier(0.5, 1, 0.89, 1);
     }
     & .about-images__figcaption {
       animation-name: fade-in;
       animation-duration: 0.8s;
       animation-fill-mode: forwards;
-      animation-delay: 1.5s;
+      animation-delay: 1.2s;
       animation-timing-function: ease-out;
     }
   }
