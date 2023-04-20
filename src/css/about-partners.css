@@ -87,3 +87,22 @@
     line-height: 145%;
   }
 }
+
+@media (--desktop) {
+  .about-partners.js-reveal-block {
+    & .about-partners__card {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .about-partners.js-reveal-block.revealed {
+    & .about-partners__card {
+      animation-name: fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+  }
+}

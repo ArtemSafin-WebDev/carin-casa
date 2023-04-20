@@ -30,12 +30,13 @@ import introAnimations from "./introAnimations";
 import productIntroParallax from "./productIntroParallax";
 import catalogParallax from "./catalogParallax";
 
-import "../css/style.css";
 import setScrollbarWidth from "./scrollbarWidth";
 import standardHeaderParallax from "./standardHeaderParallax";
 import accordions from "./accordions";
 import designProjectsSlider from "./designProjectsSlider";
 import designModal from "./designModal";
+
+import "../css/style.css";
 
 document.addEventListener("DOMContentLoaded", () => {
   setScrollbarWidth();

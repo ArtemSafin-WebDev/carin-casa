@@ -172,3 +172,38 @@
     }
   }
 }
+
+@media (--desktop) {
+  .about-info.js-reveal-block {
+    & .about-info__header-text,
+    & .about-info__header-title,
+    & .about-info__text-content {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    & .about-info__image-wrapper {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+  }
+
+  .about-info.js-reveal-block.revealed {
+    & .about-info__header-text,
+    & .about-info__header-title,
+    & .about-info__text-content {
+      animation-name: fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+
+    & .about-info__image-wrapper {
+      animation-name: clip-fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+  }
+}

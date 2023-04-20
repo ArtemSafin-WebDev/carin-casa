@@ -61,3 +61,33 @@
   width: 100%;
   height: auto;
 }
+
+@media (--desktop) {
+  .about-geography.js-reveal-block {
+    & .about-geography__map-image-wrapper {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    & .about-geography__heading {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .about-geography.js-reveal-block.revealed {
+    & .about-geography__map-image-wrapper {
+      animation-name: clip-fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+    & .about-geography__heading {
+      animation-name: fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+  }
+}

@@ -110,3 +110,37 @@
     max-width: none;
   }
 }
+
+@media (--desktop) {
+  .about-feature.js-reveal-block {
+    & .about-feature__image {
+      clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    & .about-feature__heading,
+    & .about-feature__large-text,
+    & .about-feature__small-text {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .about-feature.js-reveal-block.revealed {
+    & .about-feature__image {
+      animation-name: clip-fade-in;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+    & .about-feature__heading,
+    & .about-feature__large-text,
+    & .about-feature__small-text {
+      animation-name: fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+  }
+}

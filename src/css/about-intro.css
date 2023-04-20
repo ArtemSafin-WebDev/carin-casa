@@ -134,3 +134,28 @@
     line-height: 145%;
   }
 }
+
+@media (--desktop) {
+  .about-intro.js-reveal-block {
+    & .about-intro__heading,
+    & .about-intro__text,
+    & .about-intro__secondary-heading,
+    & .about-intro__secondary-text {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+
+  .about-intro.js-reveal-block.revealed {
+    & .about-intro__heading,
+    & .about-intro__text,
+    & .about-intro__secondary-heading,
+    & .about-intro__secondary-text {
+      animation-name: fade-in;
+      animation-duration: 0.8s;
+      animation-fill-mode: forwards;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-out;
+    }
+  }
+}
