@@ -14,6 +14,7 @@ import blog from "./pages-data/blog";
 import faq from "./pages-data/faq";
 import design from "./pages-data/design";
 import about from "./pages-data/about";
+import blogDetail from "./pages-data/blog-detail";
 
 const pagesConfig = {
   ...home,
@@ -32,6 +33,7 @@ const pagesConfig = {
   ...faq,
   ...design,
   ...about,
+  ...blogDetail,
 };
 
 export default pagesConfig;
