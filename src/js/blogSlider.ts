@@ -20,6 +20,7 @@ export default function blogSlider() {
         modules: [Navigation, Pagination],
         slidesPerView: 1,
         speed: 800,
+        longSwipesRatio: 0.2,
         navigation: {
           nextEl: element.querySelector<HTMLButtonElement>(
             ".blog-content__slider-arrow--next"

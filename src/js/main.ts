@@ -39,6 +39,7 @@ import designModal from "./designModal";
 import "../css/style.css";
 import blogSlider from "./blogSlider";
 import otherNewsSlider from "./otherNewsSlider";
+import blogShowMore from "./blogShowMore";
 
 document.addEventListener("DOMContentLoaded", () => {
   setScrollbarWidth();
@@ -75,6 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
   designModal();
   blogSlider();
   otherNewsSlider();
+  blogShowMore();
 
   if (document.body.classList.contains("admin-bar")) {
     const event = new CustomEvent(PAGE_ENTER, {
