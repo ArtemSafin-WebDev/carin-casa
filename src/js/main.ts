@@ -40,6 +40,9 @@ import "../css/style.css";
 import blogSlider from "./blogSlider";
 import otherNewsSlider from "./otherNewsSlider";
 import blogShowMore from "./blogShowMore";
+import reviewSelects from "./reviewSelects";
+import fancybox from "./fancybox";
+import reviewsShowMore from "./reviewsShowMore";
 
 document.addEventListener("DOMContentLoaded", () => {
   setScrollbarWidth();
@@ -77,6 +80,9 @@ document.addEventListener("DOMContentLoaded", () => {
   blogSlider();
   otherNewsSlider();
   blogShowMore();
+  reviewsShowMore();
+  reviewSelects();
+  fancybox();
 
   if (document.body.classList.contains("admin-bar")) {
     const event = new CustomEvent(PAGE_ENTER, {
