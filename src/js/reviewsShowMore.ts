@@ -38,17 +38,24 @@ export default function reviewsShowMore() {
 
       async function loadPosts(refresh = false) {
         let data = "";
+        if (!refresh) {
+          page++;
+        } else {
+          page = 1;
+        }
         const currentCategory = inputs
           .find((input) => input.checked)
           ?.value.trim();
         try {
+          const params = {
+            pagenumber: page,
+            type: typeInput.value.trim(),
+            category: currentCategory,
+          };
+          console.log("Params", params);
           const response = await axios.get(url, {
             signal: controller.signal,
-            params: {
-              pagenumber: page,
-              type: typeInput.value.trim(),
-              category: currentCategory,
-            },
+            params: params,
           });
 
           data = response.data as string;
@@ -65,6 +72,9 @@ export default function reviewsShowMore() {
         const nextBtn = nextPageHtml.querySelector<HTMLButtonElement>(
           ".js-reviews-show-more"
         );
+
+        console.log("next page list items", nextListItems);
+        console.log("next page HTML", nextPageHtml);
 
         if (nextListItems) {
           if (refresh) {
@@ -84,28 +94,25 @@ export default function reviewsShowMore() {
         }
 
         if (!nextBtn) {
-          this.remove();
+          link.remove();
         }
       }
 
       inputs.forEach((input) =>
         input.addEventListener("change", () => {
-          page = 1;
-          loadPosts();
+          loadPosts(true);
         })
       );
       const submitHandler = (event: SubmitEvent) => {
         event.preventDefault();
-        loadPosts();
+        loadPosts(true);
       };
 
       form.addEventListener("submit", submitHandler);
 
       const handler = (event: MouseEvent) => {
         event.preventDefault();
-        loadPosts().then(() => {
-          page++;
-        });
+        loadPosts();
       };
 
       link.addEventListener("click", handler);

@@ -68,7 +68,14 @@ class Configurator {
     if (this.materialModal && this.materialModalOpenBtn) {
       this.materialModalInstance = new ProductModal(
         this.materialModal,
-        this.materialModalOpenBtn
+        this.materialModalOpenBtn,
+        () => {
+          //@ts-ignore
+          if (window.ym) {
+            //@ts-ignore
+            window.ym(92972172, "reachGoal", "form_product");
+          }
+        }
       );
 
       this.materialModalSummaryInput = this.materialModal.querySelector(
@@ -85,7 +92,14 @@ class Configurator {
     if (this.modelModal && this.modelModalOpenBtn) {
       this.modelModalInstance = new ProductModal(
         this.modelModal,
-        this.modelModalOpenBtn
+        this.modelModalOpenBtn,
+        () => {
+          //@ts-ignore
+          if (window.ym) {
+            //@ts-ignore
+            window.ym(92972172, "reachGoal", "form_3d");
+          }
+        }
       );
 
       this.modelModalSummaryInput = this.modelModal.querySelector(

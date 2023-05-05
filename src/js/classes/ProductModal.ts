@@ -14,7 +14,12 @@ class ProductModal {
   private successLayer: HTMLElement;
   private errorLayer: HTMLElement;
   private controller: AbortController;
-  constructor(element: HTMLElement, openBtn: HTMLButtonElement) {
+  private successSubmitCallback: () => void;
+  constructor(
+    element: HTMLElement,
+    openBtn: HTMLButtonElement,
+    successSubmitCallback?: () => void
+  ) {
     this.modal = element;
     this.closeBtns = Array.from(
       element.querySelectorAll(".js-product-modal-close")
@@ -39,6 +44,10 @@ class ProductModal {
 
     if (this.openBtn) {
       this.openBtn.addEventListener("click", this.handleOpen);
+    }
+
+    if (successSubmitCallback) {
+      this.successSubmitCallback = successSubmitCallback;
     }
 
     if (this.form) {
@@ -101,6 +110,10 @@ class ProductModal {
           if (res.data.status === "mail_sent") {
             this.form.reset();
             this.showSuccess();
+
+            if (typeof this.successSubmitCallback === "function") {
+              this.successSubmitCallback();
+            }
           }
         })
         .catch(() => {

@@ -45,6 +45,20 @@ export default function writeUsForm() {
                 error.classList.remove("active");
                 success.classList.add("active");
 
+                if (form.matches(".product__has-questions-form")) {
+                  //@ts-ignore
+                  if (window.ym) {
+                    //@ts-ignore
+                    window.ym(92972172, "reachGoal", "form_ask");
+                  }
+                } else {
+                  //@ts-ignore
+                  if (window.ym) {
+                    //@ts-ignore
+                    window.ym(92972172, "reachGoal", "form_feedback");
+                  }
+                }
+
                 setTimeout(() => {
                   success.classList.remove("active");
                 }, 5000);

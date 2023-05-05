@@ -8,7 +8,13 @@ export default function designModal() {
   if (!element) return;
   function initialize() {
     if (instance) return;
-    instance = new ProductModal(element, null);
+    instance = new ProductModal(element, null, () => {
+      //@ts-ignore
+      if (window.ym) {
+        //@ts-ignore
+        window.ym(92972172, "reachGoal", "form_designer");
+      }
+    });
   }
 
   function destroy() {
