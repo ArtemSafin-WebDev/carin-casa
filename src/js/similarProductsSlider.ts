@@ -1,4 +1,4 @@
-import Swiper, { SwiperOptions } from "swiper";
+import Swiper, { SwiperOptions, Navigation } from "swiper";
 import "swiper/css";
 import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
@@ -18,12 +18,21 @@ export default function similarProductsSlider() {
       let sliderInstance: Swiper | null = null;
 
       const options: SwiperOptions = {
+        modules: [Navigation],
         slidesPerView: "auto",
         speed: 600,
         centeredSlides: true,
         loop: true,
         loopedSlides: 5,
         longSwipesRatio: 0.2,
+        navigation: {
+          nextEl: element.querySelector<HTMLButtonElement>(
+            ".product__similar-products-slider-arrow--next"
+          ),
+          prevEl: element.querySelector<HTMLButtonElement>(
+            ".product__similar-products-slider-arrow--prev"
+          ),
+        },
       };
 
       sliderInstance = new Swiper(container, options);

@@ -2,9 +2,10 @@ import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export default function blogShowMore() {
   let page = 1;
@@ -69,6 +70,8 @@ export default function blogShowMore() {
       }
 
       this.disabled = false;
+
+      ScrollTrigger.refresh();
     }
 
     links.forEach((link) => {

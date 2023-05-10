@@ -2,9 +2,10 @@ import { PAGE_ENTER } from "./constants/pageEnter";
 import { PAGE_LEAVE } from "./constants/pageLeave";
 import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 export default function reviewsShowMore() {
   let instances: Array<{
@@ -73,6 +74,16 @@ export default function reviewsShowMore() {
           ".js-reviews-show-more"
         );
 
+        const imagesLoading = nextListItems.map((item) => {
+          const image = item.querySelector<HTMLImageElement>("img");
+          return new Promise<HTMLImageElement>((resolve, reject) => {
+            image.onload = () => resolve(image);
+            image.onerror = reject;
+          });
+        });
+
+        console.log("images loading", imagesLoading);
+
         console.log("next page list items", nextListItems);
         console.log("next page HTML", nextPageHtml);
 
@@ -80,21 +91,38 @@ export default function reviewsShowMore() {
           if (refresh) {
             list.innerHTML = "";
           }
-          list.append(...nextListItems);
-          gsap.fromTo(
-            nextListItems,
-            {
-              autoAlpha: 0,
-            },
-            {
-              autoAlpha: 1,
-              duration: 0.4,
-            }
+          imagesLoading.forEach((imageLoading) =>
+            imageLoading.then((image) => {
+              gsap.fromTo(
+                image,
+                {
+                  autoAlpha: 0,
+                },
+                {
+                  autoAlpha: 1,
+                  duration: 0.4,
+                }
+              );
+            })
           );
+          list.append(...nextListItems);
         }
 
         if (!nextBtn) {
           link.remove();
+        }
+
+        if (imagesLoading.length) {
+          Promise.allSettled(imagesLoading).then(() => {
+            console.log("Images loaded", imagesLoading);
+            requestAnimationFrame(() => {
+              ScrollTrigger.refresh();
+            });
+          });
+        } else {
+          requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+          });
         }
       }
 

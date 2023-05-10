@@ -269,7 +269,7 @@
 }
 
 @media (--desktop) {
-  .blog__list-item:nth-child(9n + 1) {
+  .blog__list-item {
     grid-column: 1 / -1;
     & .blog__card {
       display: grid;
