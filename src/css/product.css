@@ -1279,13 +1279,6 @@
     padding-bottom: 100%;
   }
 
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 0.3px solid #232323;
-  }
-
   @media (--mobile) {
     &::before {
       padding-bottom: 56.25%;

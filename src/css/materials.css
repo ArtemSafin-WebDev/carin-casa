@@ -235,14 +235,6 @@
     display: block;
     padding-bottom: 56.25%;
   }
-
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border: 1px solid #232323;
-    opacity: 0.3;
-  }
 }
 
 .materials__card-image {
