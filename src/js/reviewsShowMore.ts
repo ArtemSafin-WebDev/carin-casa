@@ -122,20 +122,20 @@ export default function reviewsShowMore() {
             );
             masonry.remove(currentListItems);
           }
-          imagesLoading.forEach((imageLoading) =>
-            imageLoading.then((image) => {
-              gsap.fromTo(
-                image,
-                {
-                  autoAlpha: 0,
-                },
-                {
-                  autoAlpha: 1,
-                  duration: 0.4,
-                }
-              );
-            })
-          );
+          // imagesLoading.forEach((imageLoading) =>
+          //   imageLoading.then((image) => {
+          //     gsap.fromTo(
+          //       image,
+          //       {
+          //         autoAlpha: 0,
+          //       },
+          //       {
+          //         autoAlpha: 1,
+          //         duration: 0.4,
+          //       }
+          //     );
+          //   })
+          // );
           list.append(...nextListItems);
           masonry.appended(nextListItems);
         }
