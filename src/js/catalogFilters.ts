@@ -124,10 +124,18 @@ export default function catalogFilters() {
         }
 
         if (!isMobile()) {
-          ScrollTrigger.refresh();
-          Flip.from(state, {
-            ease: "power1.inOut",
-            duration: 0.4,
+          requestAnimationFrame(() => {
+            Flip.from(state, {
+              ease: "power1.inOut",
+              duration: 0.4,
+            }).then(() => {
+              window.dispatchEvent(new Event("resize"));
+              //@ts-ignore
+              if (window.lazySizes) {
+                //@ts-ignore
+                window.lazySizes.autoSizer.checkElems();
+              }
+            });
           });
         }
       };
@@ -155,10 +163,18 @@ export default function catalogFilters() {
         }
 
         if (isMobile()) {
-          ScrollTrigger.refresh();
-          Flip.from(state, {
-            ease: "power1.inOut",
-            duration: 0.4,
+          requestAnimationFrame(() => {
+            Flip.from(state, {
+              ease: "power1.inOut",
+              duration: 0.4,
+            }).then(() => {
+              window.dispatchEvent(new Event("resize"));
+              //@ts-ignore
+              if (window.lazySizes) {
+                //@ts-ignore
+                window.lazySizes.autoSizer.checkElems();
+              }
+            });
           });
         }
       };
