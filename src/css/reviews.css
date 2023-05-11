@@ -182,7 +182,7 @@
 }
 
 .reviews__layout {
-  border-top: 0.3px solid #d3d1cd;
+  border-top: 1px solid #d3d1cd;
   padding-top: 10rem;
   @media (--desktop) {
     display: grid;
@@ -255,7 +255,7 @@
     text-transform: uppercase;
 
     line-height: 100%;
-    border-bottom: 0.5px solid #232323;
+    border-bottom: 1px solid #232323;
     text-align: left;
     cursor: pointer;
     & svg {
@@ -417,17 +417,12 @@
 }
 
 .reviews__list {
-  column-count: 4;
-  column-gap: 1.6rem;
-
-  @media (--mobile) {
-    column-count: 2;
-  }
 }
 .reviews__list-item {
   display: flex;
   flex-direction: column;
-  margin-bottom: 1.6rem;
+  width: calc(25% - (10px * 3 / 4));
+  margin-bottom: 10px;
 }
 
 .reviews__card {
@@ -452,8 +447,8 @@
   letter-spacing: 0.25em;
   text-transform: uppercase;
   padding: 2.2rem;
-  border: 0.5px solid #232323;
-  transition: color 0.2s, background-color 0.2s;
+  border: 1px solid #232323;
+  transition: color 0.2s, background-color 0.2s, opacity 0.2s;
   margin-top: 8rem;
   @media (hover: hover) {
     &:hover {
@@ -470,4 +465,10 @@
     padding: 2.2rem;
     margin-top: 3.2rem;
   }
+}
+
+.reviews__show-more[disabled] {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.5;
 }

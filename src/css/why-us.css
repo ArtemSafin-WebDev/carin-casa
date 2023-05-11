@@ -108,7 +108,7 @@
 .why-us__accordion {
   display: flex;
   flex-direction: column;
-  border-top: 0.3px solid rgba(35, 35, 35, 0.2);
+  border-top: 1px solid rgba(35, 35, 35, 0.2);
 
   &:first-child {
     border: none;

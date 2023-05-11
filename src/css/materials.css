@@ -161,8 +161,8 @@
 
 .materials__results {
   padding-bottom: 10rem;
-  border-bottom: 0.3px solid #d3d1cd;
-  border-top: 0.3px solid #d3d1cd;
+  border-bottom: 1px solid #d3d1cd;
+  border-top: 1px solid #d3d1cd;
   padding-top: 4.8rem;
   @media (--mobile) {
     padding-bottom: 5.6rem;

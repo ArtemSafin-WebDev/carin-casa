@@ -25,24 +25,24 @@
   @media (--desktop) {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    border-top: 0.3px solid #d3d1cd;
+    border-top: 1px solid #d3d1cd;
   }
 }
 
 @media (--desktop) {
   .about-partners__list-item {
     &:nth-child(3n + 2) {
-      border-left: 0.3px solid #d3d1cd;
+      border-left: 1px solid #d3d1cd;
     }
     &:nth-child(3n + 3) {
-      border-left: 0.3px solid #d3d1cd;
+      border-left: 1px solid #d3d1cd;
     }
   }
 }
 
 .about-partners__list-item {
   @media (--mobile) {
-    border-top: 0.3px solid #d3d1cd;
+    border-top: 1px solid #d3d1cd;
   }
 }
 

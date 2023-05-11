@@ -164,7 +164,7 @@
 .feature__remark {
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 135%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -180,7 +180,7 @@
   @media (--mobile) {
     font-style: normal;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 1.1rem;
     line-height: 135%;
     letter-spacing: 0.25em;
     text-transform: uppercase;
@@ -327,7 +327,7 @@
   align-self: flex-start;
   font-style: normal;
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1.2rem;
   line-height: 100%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
@@ -343,7 +343,7 @@
     transition: transform 0.4s;
     transform-origin: center center;
     width: 100%;
-    padding-top: 4px;
+    padding-top: 0.4rem;
     background-clip: content-box;
     box-sizing: content-box;
     transform: translateZ(0);
@@ -352,11 +352,11 @@
   @media (--mobile) {
     font-style: normal;
     font-weight: 400;
-    font-size: 11px;
+    font-size: 1.1rem;
     line-height: 100%;
 
     &::before {
-      padding-top: 6px;
+      padding-top: 0.6rem;
     }
   }
 
@@ -383,7 +383,7 @@
     letter-spacing: 0.25em;
     text-transform: uppercase;
     padding-bottom: 0.5rem;
-    border-bottom: 0.5px dashed #232323;
+    border-bottom: 1px dashed #232323;
     align-self: flex-start;
     margin-bottom: 2.4rem;
   }

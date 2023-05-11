@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "@types/body-scroll-lock": "^3.1.0",
+    "@types/imagesloaded": "^4.1.2",
     "@types/inputmask": "^5.0.3",
+    "@types/masonry-layout": "^4.2.5",
     "@types/node": "^18.11.19",
     "@types/postcss-preset-env": "^8.0.0",
     "@types/validator": "^13.7.12",
@@ -30,9 +32,11 @@
     "body-scroll-lock": "^3.1.5",
     "detect-it": "^4.0.1",
     "gsap": "^3.11.4",
+    "imagesloaded": "^5.0.0",
     "inputmask": "^5.0.7",
     "lazysizes": "^5.3.2",
     "lodash": "^4.17.21",
+    "masonry-layout": "^4.2.2",
     "swiper": "^8.4.7",
     "validator": "^13.9.0"
   }

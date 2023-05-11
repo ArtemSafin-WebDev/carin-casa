@@ -4,6 +4,8 @@ import { gsap } from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import axios from "axios";
+import Masonry from "masonry-layout";
+import ImagesLoaded from "imagesloaded";
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -11,6 +13,10 @@ export default function reviewsShowMore() {
   let instances: Array<{
     link: HTMLLinkElement;
     handler: (event: MouseEvent) => void;
+    masonry: Masonry;
+    imgLoad: ImagesLoaded.ImagesLoaded;
+    onAlways: () => void;
+    onLayout: () => void;
   }> = [];
 
   function initialize(context = document) {
@@ -37,6 +43,25 @@ export default function reviewsShowMore() {
       const list = element.querySelector<HTMLUListElement>(".reviews__list");
       const controller = new AbortController();
 
+      const imgLoad = ImagesLoaded(element);
+
+      let masonry: Masonry | null = null;
+
+      function onLayout() {
+        ScrollTrigger.refresh();
+      }
+
+      function onAlways() {
+        masonry = new Masonry(list, {
+          itemSelector: ".reviews__list-item",
+          gutter: 10,
+          transitionDuration: "0.8s",
+        });
+
+        // masonry.on("layoutComplete", onLayout);
+      }
+      imgLoad.on("always", onAlways);
+
       async function loadPosts(refresh = false) {
         let data = "";
         if (!refresh) {
@@ -47,6 +72,7 @@ export default function reviewsShowMore() {
         const currentCategory = inputs
           .find((input) => input.checked)
           ?.value.trim();
+        link.disabled = true;
         try {
           const params = {
             pagenumber: page,
@@ -63,6 +89,8 @@ export default function reviewsShowMore() {
         } catch (err) {
           console.error(err);
           return;
+        } finally {
+          link.disabled = false;
         }
 
         const parser = new DOMParser();
@@ -89,7 +117,10 @@ export default function reviewsShowMore() {
 
         if (nextListItems) {
           if (refresh) {
-            list.innerHTML = "";
+            const currentListItems = Array.from<HTMLLIElement>(
+              element.querySelectorAll(".reviews__list-item")
+            );
+            masonry.remove(currentListItems);
           }
           imagesLoading.forEach((imageLoading) =>
             imageLoading.then((image) => {
@@ -106,24 +137,34 @@ export default function reviewsShowMore() {
             })
           );
           list.append(...nextListItems);
+          masonry.appended(nextListItems);
         }
 
         if (!nextBtn) {
-          link.remove();
+          // link.remove();
+          link.style.display = "none";
+        } else {
+          link.style.display = "";
         }
 
         if (imagesLoading.length) {
           Promise.allSettled(imagesLoading).then(() => {
             console.log("Images loaded", imagesLoading);
             requestAnimationFrame(() => {
+              if (masonry) masonry.layout();
               ScrollTrigger.refresh();
             });
           });
         } else {
           requestAnimationFrame(() => {
+            if (masonry) masonry.layout();
             ScrollTrigger.refresh();
           });
         }
+
+        // requestAnimationFrame(() => {
+        //   ScrollTrigger.refresh();
+        // });
       }
 
       inputs.forEach((input) =>
@@ -148,13 +189,22 @@ export default function reviewsShowMore() {
       instances.push({
         link,
         handler,
+        masonry,
+        imgLoad,
+        onAlways,
+        onLayout,
       });
     });
   }
 
   function destroy() {
-    instances.forEach(({ link, handler }) =>
-      link.removeEventListener("click", handler)
+    instances.forEach(
+      ({ link, handler, masonry, imgLoad, onAlways, onLayout }) => {
+        link.removeEventListener("click", handler);
+        imgLoad.off("always", onAlways);
+        masonry.off("layoutComplete", onLayout);
+        masonry.destroy();
+      }
     );
     instances = [];
   }

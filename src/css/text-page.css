@@ -48,7 +48,7 @@
   flex-direction: column;
   @media (--desktop) {
     grid-column: 13 / -1;
-    border-left: 0.3px solid #d3d1cd;
+    border-left: 1px solid #d3d1cd;
   }
 }
 .text-page__heading {
@@ -167,7 +167,7 @@
 .text-page__accordion {
   display: flex;
   flex-direction: column;
-  border-top: 0.3px solid rgba(35, 35, 35, 0.2);
+  border-top: 1px solid rgba(35, 35, 35, 0.2);
 
   @media (--desktop) {
     &:first-child {

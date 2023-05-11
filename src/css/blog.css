@@ -144,8 +144,8 @@
 }
 
 .blog__results {
-  border-bottom: 0.3px solid #d3d1cd;
-  border-top: 0.3px solid #d3d1cd;
+  border-bottom: 1px solid #d3d1cd;
+  border-top: 1px solid #d3d1cd;
   padding-top: 4.8rem;
   padding-bottom: 10rem;
   display: flex;
@@ -330,7 +330,7 @@
   display: block;
   text-align: center;
   padding: 2.2rem;
-  border: 0.5px solid #232323;
+  border: 1px solid #232323;
   font-style: normal;
   font-weight: 400;
   font-size: 1.2rem;
