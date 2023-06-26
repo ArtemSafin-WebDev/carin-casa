@@ -72,7 +72,7 @@ export default function reviewsShowMore() {
         const currentCategory = inputs
           .find((input) => input.checked)
           ?.value.trim();
-        link.disabled = true;
+        link.classList.add("disabled");
         try {
           const params = {
             pagenumber: page,
@@ -90,7 +90,7 @@ export default function reviewsShowMore() {
           console.error(err);
           return;
         } finally {
-          link.disabled = false;
+          link.classList.remove("disabled");
         }
 
         const parser = new DOMParser();

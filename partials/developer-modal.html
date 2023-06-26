@@ -1,0 +1,118 @@
+<div class="product-modal js-developer-modal">
+    <div class="product-modal__inner product-modal__inner--wide">
+        <div class="product-modal__layers">
+            <div class="product-modal__standard-layer">
+
+
+                <div class="product-modal__top-row">
+                    <h3 class="product-modal__heading">
+                        Написать Разработчику сайта
+                    </h3>
+                    <button class="product-modal__close js-product-modal-close">
+                        <svg width="14" height="14" aria-hidden="true">
+                            <use xlink:href="#cross"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-modal__text">
+                    <p>
+                        Если у вас есть предложения по улучшению сайта или вы хотите заказать разработку для своей
+                        компании, отправьте заявку по форме, представленной ниже.
+                    </p>
+                </div>
+
+                <div class="product-modal__form-wrapper">
+                    <form action="/" method="POST" class="product__has-questions-form">
+                        <input type="hidden" class="product-modal__summary-input">
+                        <div class="product__has-questions-form-fields">
+                            <div class="product__has-questions-form-field">
+                                <label class="product__has-questions-form-label">
+                                    <input type="text" class="product__has-questions-form-input" name="your-name"
+                                        placeholder="Имя" required="">
+                                    <span class="product__has-questions-form-label-text">
+                                        Имя
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="product__has-questions-form-field">
+                                <label class="product__has-questions-form-label">
+                                    <input type="tel" class="product__has-questions-form-input" name="your-phone"
+                                        placeholder="Телефон" required="">
+                                    <span class="product__has-questions-form-label-text">
+                                        Телефон
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="product__has-questions-form-field">
+                                <label class="product__has-questions-form-label">
+                                    <input type="text" class="product__has-questions-form-input" name="your-company"
+                                        placeholder="Название компании">
+                                    <span class="product__has-questions-form-label-text">
+                                        Название компании
+                                    </span>
+                                </label>
+                            </div>
+                            <div class="product__has-questions-form-field product__has-questions-form-field--fullwidth">
+                                <label class="product__has-questions-form-label">
+                                    <input type="text" class="product__has-questions-form-input" name="your-question"
+                                        placeholder="Оставьте комментарий или вопрос">
+                                    <span class="product__has-questions-form-label-text">
+                                        Оставьте комментарий или вопрос
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        <button class="product__has-questions-form-submit" type="submit">
+                            Отправить
+                        </button>
+                        <div class="product__has-questions-form-policy">
+                            Нажимая кнопку «Отправить» вы соглашаетесь на обработку персональных данных
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="product-modal__success-layer">
+                <div class="product-modal__top-row">
+                    <h3 class="product-modal__heading">
+                        Заявка успешно отправлена
+                    </h3>
+                    <button class="product-modal__close js-product-modal-close">
+                        <svg width="14" height="14" aria-hidden="true">
+                            <use xlink:href="#cross"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-modal__text">
+                    <p>
+                        Благодарим за вашу заявку. Мы рассмотрим её и свяжемся с вами в ближайшее время!
+                    </p>
+                </div>
+
+                <button class="product-modal__ok-btn js-product-modal-reset-layers" type="button">
+                    Отлично
+                </button>
+            </div>
+            <div class="product-modal__error-layer">
+                <div class="product-modal__top-row">
+                    <h3 class="product-modal__heading">
+                        Не удалось отправить заявку
+                    </h3>
+                    <button class="product-modal__close js-product-modal-close">
+                        <svg width="14" height="14" aria-hidden="true">
+                            <use xlink:href="#cross"></use>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-modal__text">
+                    <p>
+                        Пожалуйста заполните данные и отправьте еще раз.
+                    </p>
+                </div>
+
+                <button class="product-modal__ok-btn js-product-modal-reset-layers" type="button">
+                    Отправить еще раз
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

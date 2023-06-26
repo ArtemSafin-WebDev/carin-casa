@@ -372,15 +372,10 @@
   line-height: 135%;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #a9a7a4;
+
   gap: 1.2rem;
 
   white-space: nowrap;
-
-  &:link,
-  &:visited {
-    color: #a9a7a4;
-  }
 
   @media (--desktop) {
     grid-column: 21 / -1;
